@@ -41,6 +41,17 @@ private:
 	static Engine* instance;
 #pragma endregion
 public:
+
+	SDL_Renderer* const GetRenderer() const
+	{
+		return renderer;
+	}
+
+	bool GetIsPressed(SDL_Scancode code)
+	{
+		return keys[code];
+	}
+
 	void Init();
 	void Init(char* title, int width, int height);
 	void Start();
@@ -58,7 +69,7 @@ private:
 
 	// Rendering
 	SDL_Window* window;
-	SDL_Surface* screen;
+	SDL_Renderer* renderer;
 
 	// Inputs
 	bool keys[SDL_NUM_SCANCODES];

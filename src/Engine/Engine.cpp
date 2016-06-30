@@ -7,7 +7,7 @@ Engine::Engine()
 	: isRunning(false)
 	, isPaused(false)
 	, window(nullptr)
-	, screen(nullptr)
+	, renderer(nullptr)
 {
 	memset(keys, 0, sizeof(bool) * SDL_NUM_SCANCODES);
 	memset(lastKeys, 0, sizeof(bool) * SDL_NUM_SCANCODES);
@@ -45,7 +45,15 @@ void Engine::Init(char * title, int width, int height)
 		}
 		else
 		{
-			screen = SDL_GetWindowSurface(window);
+			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+			if (renderer == NULL)
+			{
+				printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
+			}
+			else
+			{
+				SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+			}
 		}
 	}
 }
@@ -111,5 +119,11 @@ void Engine::Update()
 
 void Engine::Draw()
 {
+	//Clear screen
+	SDL_RenderClear(renderer);
+
 	FOREACH_COMPONENT(Draw());
+
+	//Update screen
+	SDL_RenderPresent(renderer);
 }

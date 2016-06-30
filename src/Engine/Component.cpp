@@ -1,6 +1,6 @@
 #include "Component.h"
 
-std::vector<Component*> Component::components = std::vector<Component*>(1000);
+std::vector<Component*> Component::components;
 
 Component::Component()
 {

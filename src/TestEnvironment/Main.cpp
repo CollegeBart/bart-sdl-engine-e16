@@ -1,12 +1,12 @@
 #include "Engine.h"
-#include "Component.h"
+#include "Wqt.h"
 
 int main(int argc, char* args[])
 {
 	gEngine->Init();
 
 	// Créer tous mes objets
-	Component* monCompo = new Component();
+	Wqt* monCompo = new Wqt();
 
 	int assert = gEngine->Run();
 

@@ -9,10 +9,10 @@ class Component
 
 public:
 	Component();
-	~Component();
+	virtual ~Component();
 
-	void Update();
-	void Draw();
+	virtual void Update();
+	virtual void Draw();
 
 private:
 	static std::vector<Component*> components;
