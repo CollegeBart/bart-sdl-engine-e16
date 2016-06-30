@@ -19,33 +19,33 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B8437334-12D8-45E4-BDC2-A505A0217957}</ProjectGuid>
+    <ProjectGuid>{64C6B8A3-7640-471E-AC4D-601A5CF2312F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>SDLEngine</RootNamespace>
+    <RootNamespace>TestEnvironment</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -71,22 +71,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\Engine;..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\lib\SDL2\lib\x86;..\..\lib\SDL2_image\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\Engine;..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\lib\SDL2\lib\x64;..\..\lib\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\Engine;..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\lib\SDL2\lib\x86;..\..\lib\SDL2_image\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\Engine;..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\lib\SDL2\lib\x64;..\..\lib\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -154,13 +154,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Component.cpp" />
-    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Component.h" />
-    <ClInclude Include="Engine.h" />
-    <ClInclude Include="Utils.h" />
+    <ProjectReference Include="..\Engine\Engine.vcxproj">
+      <Project>{b8437334-12d8-45e4-bdc2-a505a0217957}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
