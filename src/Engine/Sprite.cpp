@@ -39,6 +39,8 @@ Sprite::Sprite(const char* path, int x, int y, int srcX, int srcY, int srcW, int
 
 Sprite::~Sprite()
 {
+	SDL_DestroyTexture(image);
+	image = NULL;
 	delete srcRect;
 	delete dstRect;
 }
