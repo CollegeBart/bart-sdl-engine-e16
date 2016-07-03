@@ -33,8 +33,8 @@ Sprite::Sprite(const char* path, int x, int y, int srcX, int srcY, int srcW, int
 	dstRect = new SDL_Rect();
 	dstRect->x = x;
 	dstRect->y = y;
-	dstRect->h = srcW * scale;
-	dstRect->w = srcH * scale;
+	dstRect->h = srcH * scale;
+	dstRect->w = srcW * scale;
 }
 
 Sprite::~Sprite()
