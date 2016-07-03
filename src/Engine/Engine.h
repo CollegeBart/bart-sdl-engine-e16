@@ -2,6 +2,13 @@
 
 #define DEFAULT_SCREEN_WIDTH 800
 #define DEFAULT_SCREEN_HEIGHT 600
+enum ResolutionSide
+{
+	WIDTH,
+	HEIGHT,
+	SIZE
+};
+
 #define DEFAULT_TITLE "SDL"
 
 #define gEngine Engine::GetInstance()
@@ -52,6 +59,12 @@ public:
 		return keys[code];
 	}
 
+	void GetScreenRes(int res[SIZE])
+	{
+		res[WIDTH] = resolution[WIDTH];
+		res[HEIGHT] = resolution[HEIGHT];
+	}
+
 	void Init();
 	void Init(char* title, int width, int height);
 	void Start();
@@ -70,6 +83,7 @@ private:
 	// Rendering
 	SDL_Window* window;
 	SDL_Renderer* renderer;
+	int resolution[SIZE];
 
 	// Inputs
 	bool keys[SDL_NUM_SCANCODES];

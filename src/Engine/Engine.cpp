@@ -8,9 +8,13 @@ Engine::Engine()
 	, isPaused(false)
 	, window(nullptr)
 	, renderer(nullptr)
+
 {
 	memset(keys, 0, sizeof(bool) * SDL_NUM_SCANCODES);
 	memset(lastKeys, 0, sizeof(bool) * SDL_NUM_SCANCODES);
+	resolution[WIDTH] = DEFAULT_SCREEN_WIDTH;
+	resolution[HEIGHT] = DEFAULT_SCREEN_HEIGHT;
+
 }
 
 Engine::~Engine()
