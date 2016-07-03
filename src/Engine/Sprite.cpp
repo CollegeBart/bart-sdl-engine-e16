@@ -8,13 +8,18 @@ Sprite::Sprite()
 { 
 }
 
+Sprite::Sprite(const char * path)
+	: dstRect(nullptr)
+	, srcRect(nullptr)
+{
+	image = LoadImage(path);
+}
+
 Sprite::Sprite(const char* path, int x, int y)
 	: dstRect(nullptr)
 	, srcRect(nullptr)
 	, x(x), y(y)
 {
-	srcRect = new SDL_Rect();
-	dstRect = new SDL_Rect();
 	image = LoadImage(path);
 }
 
