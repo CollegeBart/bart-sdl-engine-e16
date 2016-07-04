@@ -59,10 +59,18 @@ public:
 		return keys[code];
 	}
 
-	void GetScreenRes(int res[SIZE])
-	{
+	void const GetScreenRes(int res[SIZE])
+	{		
 		res[WIDTH] = resolution[WIDTH];
 		res[HEIGHT] = resolution[HEIGHT];
+	}
+
+	void SetScreenRes(int w, int h, int fullScreen)
+	{				
+		resolution[WIDTH] = w;
+		resolution[HEIGHT] = h;
+		SDL_SetWindowSize(window, w, h);
+		SDL_SetWindowFullscreen(window, fullScreen);
 	}
 
 	void Init();

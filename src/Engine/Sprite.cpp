@@ -12,6 +12,8 @@ Sprite::Sprite(const char * path)
 	: dstRect(nullptr)
 	, srcRect(nullptr)
 {
+	srcRect = new SDL_Rect();
+	dstRect = new SDL_Rect();
 	image = LoadImage(path);
 }
 
