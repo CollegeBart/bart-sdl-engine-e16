@@ -15,6 +15,7 @@ public:
 	Sprite();
 	Sprite(const char* path);
 	Sprite(const char* path, int x, int y);
+	Sprite(const char* path, int x, int y, int w, int h);
 
 	Sprite(const char* path, int x, int y, int srcX,
 		int srcY, int srcW, int srcH, float scale = 1.0f);
