@@ -53,6 +53,7 @@ public:
 
 	virtual void Update();
 	void Draw();
+	void ReloadImage(const char* path);
 
 protected:
 	float x, y;

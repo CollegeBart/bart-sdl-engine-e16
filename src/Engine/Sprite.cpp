@@ -95,6 +95,18 @@ void Sprite::Draw()
 	}
 }
 
+void Sprite::ReloadImage(const char* path)
+{
+	if (image == NULL)
+	{
+		printf("Unable to load image %s! SDL_image Error: %s, no default image found\n", path, IMG_GetError());
+	}
+	else
+	{
+		image = LoadImage(path);
+	}
+}
+
 SDL_Texture* Sprite::LoadImage(const char* path)
 {
 	//The final texture
