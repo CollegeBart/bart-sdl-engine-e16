@@ -47,11 +47,6 @@ public:
 		return renderer;
 	}
 
-	bool GetIsPressed(SDL_Scancode code)
-	{
-		return keys[code];
-	}
-
 	void Init();
 	void Init(char* title, int width, int height);
 	void Start();
@@ -71,9 +66,6 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 
-	// Inputs
-	bool keys[SDL_NUM_SCANCODES];
-	bool lastKeys[SDL_NUM_SCANCODES];
 
 
 };

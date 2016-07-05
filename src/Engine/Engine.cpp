@@ -9,8 +9,7 @@ Engine::Engine()
 	, window(nullptr)
 	, renderer(nullptr)
 {
-	memset(keys, 0, sizeof(bool) * SDL_NUM_SCANCODES);
-	memset(lastKeys, 0, sizeof(bool) * SDL_NUM_SCANCODES);
+	
 }
 
 Engine::~Engine()
