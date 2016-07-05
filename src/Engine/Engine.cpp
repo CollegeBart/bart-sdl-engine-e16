@@ -54,6 +54,8 @@ void Engine::Init(char * title, int width, int height)
 			else
 			{
 				SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+
+				input = new Input();
 			}
 		}
 	}
@@ -75,25 +77,21 @@ int Engine::Run()
 		// Pompe a message
 		while (SDL_PollEvent(&event) != 0)
 		{
+			input->Poll(event);
+
 			switch (event.type)
 			{
-			case SDL_KEYDOWN:
-				keys[event.key.keysym.scancode] = true;
-				break;
-			case SDL_KEYUP:
-				keys[event.key.keysym.scancode] = false;
-				break;
 			case SDL_QUIT:
 				Kill();
 				return 0;
 			default:
 				break;
 			}
-		}
 
-		if (keys[SDL_SCANCODE_ESCAPE])
-		{
-			Kill();
+			if (input->IsKeyReleased(SDL_SCANCODE_ESCAPE))
+			{
+				Kill();
+			}
 		}
 
 		if (!isPaused)
@@ -104,6 +102,8 @@ int Engine::Run()
 
 		SDL_UpdateWindowSurface(window);
 	}
+
+	delete input;
 
 	return 0;
 }

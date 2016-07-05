@@ -12,6 +12,7 @@ enum ResolutionSide
 #define DEFAULT_TITLE "SDL"
 
 #define gEngine Engine::GetInstance()
+#define gInput gEngine->GetInput()
 
 #include <iostream>
 #include <vector>
@@ -20,6 +21,7 @@ enum ResolutionSide
 #include "SDL.h"
 
 #include "Utils.h"
+#include "Input.h"
 #include "Component.h"
 
 class Engine
@@ -52,6 +54,11 @@ public:
 	SDL_Renderer* const GetRenderer() const
 	{
 		return renderer;
+	}
+
+	Input* const GetInput() const
+	{
+		return input;
 	}
 
 	void const GetScreenRes(int res[SIZE])
@@ -87,5 +94,8 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	int resolution[SIZE];
+
+	// Inputs
+	Input* input;
 
 };

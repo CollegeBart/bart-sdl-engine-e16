@@ -6,22 +6,24 @@
 
 #define NUM_MOUSE_BUTTONS 5
 
-class Input :
-	public Component
+class Input
 {
 public:
 	Input();
 	~Input();
 
-	void Update();
+	void Poll(const SDL_Event& e);
 
-	bool IsPressed(SDL_Scancode key) const;
-	bool IsHeld(SDL_Scancode key) const;
-	bool IsReleased(SDL_Scancode key) const;
+	bool IsKeyPressed(SDL_Scancode key);
+	bool IsKeyHeld(SDL_Scancode key) const;
+	bool IsKeyReleased(SDL_Scancode key);
 
 	bool IsMouseButtonPressed(int button) const;
 	bool IsMouseButtonHeld(int button) const;
 	bool IsMouseButtonReleased(int button) const;
+
+	float MouseX() const;
+	float MouseY() const;
 
 	Point GetMousePosition(Point& position) const;
 

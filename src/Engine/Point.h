@@ -24,6 +24,5 @@ struct Point
 		return false;
 	}
 
-private:
 	float x, y;
 };
