@@ -19,7 +19,7 @@ Vector::Vector(Point p1, Point p2)
 
 void Vector::Normalize()
 {
-	float lenght = GetLenght();
+	float lenght = GetLength();
 
 	x /= lenght;
 	y /= lenght;
