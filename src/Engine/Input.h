@@ -5,6 +5,7 @@
 #include "Point.h"
 
 #define NUM_MOUSE_BUTTONS 5
+#define CONTROLLER_JOYSTICK_DEATHZONE 8000
 
 class Input
 {
@@ -18,6 +19,10 @@ public:
 	bool IsKeyHeld(SDL_Scancode key) const;
 	bool IsKeyReleased(SDL_Scancode key);
 
+	bool IsControllerButtonPressed(SDL_GameControllerButton button);
+	bool IsControllerButtonHeld(SDL_GameControllerButton button) const;
+	bool IsControllerButtonReleased(SDL_GameControllerButton button);
+
 	bool IsMouseButtonPressed(int button) const;
 	bool IsMouseButtonHeld(int button) const;
 	bool IsMouseButtonReleased(int button) const;
@@ -30,6 +35,11 @@ public:
 private:
 	bool keys[SDL_NUM_SCANCODES];
 	bool lastKeys[SDL_NUM_SCANCODES];
+
+	SDL_GameController *controller = nullptr;
+	bool controllerButtons[SDL_CONTROLLER_BUTTON_MAX];
+	bool lastControllerButtons[SDL_CONTROLLER_BUTTON_MAX];
+	void OpenControllers();
 
 	bool mouseButtons[NUM_MOUSE_BUTTONS];
 	bool lastMouseButtons[NUM_MOUSE_BUTTONS];
