@@ -17,6 +17,7 @@ enum ResolutionSide
 #include <iostream>
 #include <vector>
 #include <math.h>
+#include <time.h>
 
 #include "SDL.h"
 
@@ -73,6 +74,17 @@ public:
 		resolution[HEIGHT] = h;
 		SDL_SetWindowSize(window, w, h);
 		SDL_SetWindowFullscreen(window, fullScreen);
+	}
+
+	int GenerateRandomNumber(const int number_of_possibility)
+	{
+		// Used for random
+		std::srand(time(0));
+
+		// Generate a number between 0 (inclusive) and number_of_possibility (exclusive).
+		int NumberGenerated = rand() % number_of_possibility;
+
+		return NumberGenerated;
 	}
 
 	void Init();
