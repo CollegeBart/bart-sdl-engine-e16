@@ -19,11 +19,11 @@ Vector::Vector(Point p1, Point p2)
 
 void Vector::Normalize(Vector * v)
 {
-	float lenght = GetLenght();
+	float length = GetLength();
 
-	v->x /= lenght;
-	v->y /= lenght;
-	v->z /= lenght;
+	v->x /= length;
+	v->y /= length;
+	v->z /= length;
 }
 
 float Vector::Dot(Vector * other)
@@ -31,7 +31,7 @@ float Vector::Dot(Vector * other)
 	return x * other->x + y * other->y + z * other->z;
 }
 
-float Vector::GetLenght() const
+float Vector::GetLength() const
 {
 	return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
 }
@@ -52,11 +52,11 @@ void Vector::Reflect(Vector * v, int axis)
 	}
 }
 
-void Vector::Multiply(float multiplyer)
+void Vector::Multiply(float multiplier)
 {
-	x *= multiplyer;
-	y *= multiplyer;
-	z *= multiplyer;
+	x *= multiplier;
+	y *= multiplier;
+	z *= multiplier;
 }
 
 Vector & Vector::operator+(Vector & other)

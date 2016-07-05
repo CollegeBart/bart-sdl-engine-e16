@@ -11,7 +11,7 @@ public:
 
 	void Normalize(Vector* v);
 	float Dot(Vector* other);
-	float GetLenght() const;
+	float GetLength() const;
 
 
 	/**
@@ -22,7 +22,7 @@ public:
 	*/
 	void Reflect(Vector * v, int axis);
 
-	void Multiply(float multiplyer);
+	void Multiply(float multiplier);
 
 	Vector& operator+(Vector& other);
 
