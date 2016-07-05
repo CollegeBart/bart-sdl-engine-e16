@@ -28,7 +28,7 @@ public:
 	*/
 	void Reflect(Axis axis);
 
-	void Multiply(float multiplyer);
+	void Multiply(float multiplier);
 
 	Vector& operator+(Vector& other);
 

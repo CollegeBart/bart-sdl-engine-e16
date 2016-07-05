@@ -52,11 +52,11 @@ void Vector::Reflect(Axis axis)
 	}
 }
 
-void Vector::Multiply(float multiplyer)
+void Vector::Multiply(float multiplier)
 {
-	x *= multiplyer;
-	y *= multiplyer;
-	z *= multiplyer;
+	x *= multiplier;
+	y *= multiplier;
+	z *= multiplier;
 }
 
 Vector & Vector::operator+(Vector & other)
