@@ -17,13 +17,13 @@ Vector::Vector(Point p1, Point p2)
 {
 }
 
-void Vector::Normalize(Vector * v)
+void Vector::Normalize()
 {
 	float lenght = GetLenght();
 
-	v->x /= lenght;
-	v->y /= lenght;
-	v->z /= lenght;
+	x /= lenght;
+	y /= lenght;
+	z /= lenght;
 }
 
 float Vector::Dot(Vector * other)
@@ -31,23 +31,23 @@ float Vector::Dot(Vector * other)
 	return x * other->x + y * other->y + z * other->z;
 }
 
-float Vector::GetLenght() const
+float Vector::GetLength() const
 {
 	return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
 }
 
-void Vector::Reflect(Vector * v, int axis)
+void Vector::Reflect(Axis axis)
 {
 	switch (axis)
 	{
 		case 0:
-			v->x = -v->x;
+			x = -x;
 			break;
 		case 1:
-			v->y = -v->y;
+			y = -y;
 			break;
 		case 2:
-			v->z = -v->z;
+			z = -z;
 			break;
 	}
 }

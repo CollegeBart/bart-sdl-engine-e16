@@ -5,14 +5,20 @@
 class Vector
 {
 public:
+
+	enum Axis { X, Y, Z};
+
 	Vector();
 	Vector(float x, float y, float z = 0.0f);
 	Vector(Point p1, Point p2);
 
-	void Normalize(Vector* v);
+	void Normalize();
 	float Dot(Vector* other);
-	float GetLenght() const;
+	float GetLength() const;
 
+	float GetX() const { return x; }
+	float GetY() const { return y; }
+	float GetZ() const { return z; }
 
 	/**
 	* Reflects a vector on the given axis :
@@ -20,7 +26,7 @@ public:
 	* 1: Y
 	* 2: Z
 	*/
-	void Reflect(Vector * v, int axis);
+	void Reflect(Axis axis);
 
 	void Multiply(float multiplyer);
 
