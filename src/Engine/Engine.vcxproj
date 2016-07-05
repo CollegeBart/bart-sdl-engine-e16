@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{ADE39BFF-8C74-47C5-BFAD-8DB0DE03663E}</ProjectGuid>
+    <ProjectGuid>{143F2E9B-AE0B-4E1D-ACCD-194B8CC76904}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SDLEngine</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
@@ -159,6 +159,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h" />
@@ -167,6 +168,7 @@
     <ClInclude Include="Point.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="Vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
