@@ -158,12 +158,12 @@
     <ClCompile Include="Wqt.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Engine\Engine.vcxproj">
-      <Project>{b8437334-12d8-45e4-bdc2-a505a0217957}</Project>
-    </ProjectReference>
+    <ClInclude Include="Wqt.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Wqt.h" />
+    <ProjectReference Include="..\Engine\Engine.vcxproj">
+      <Project>{ade39bff-8c74-47c5-bfad-8db0de03663e}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

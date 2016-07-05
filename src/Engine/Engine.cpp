@@ -8,8 +8,10 @@ Engine::Engine()
 	, isPaused(false)
 	, window(nullptr)
 	, renderer(nullptr)
+
 {
-	
+	resolution[WIDTH] = DEFAULT_SCREEN_WIDTH;
+	resolution[HEIGHT] = DEFAULT_SCREEN_HEIGHT;
 }
 
 Engine::~Engine()

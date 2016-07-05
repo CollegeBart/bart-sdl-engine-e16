@@ -8,6 +8,15 @@ Sprite::Sprite()
 { 
 }
 
+Sprite::Sprite(const char * path)
+	: dstRect(nullptr)
+	, srcRect(nullptr)
+{
+	srcRect = new SDL_Rect();
+	dstRect = new SDL_Rect();
+	image = LoadImage(path);
+}
+
 Sprite::Sprite(const char* path, int x, int y)
 	: dstRect(nullptr)
 	, srcRect(nullptr)
@@ -16,7 +25,7 @@ Sprite::Sprite(const char* path, int x, int y)
 	image = LoadImage(path);
 }
 
-Sprite::Sprite(const char* path, int x, int y, int srcX, int srcY, int srcW, int srcH, float scale)
+Sprite::Sprite(const char * path, int x, int y, int srcX, int srcY, int srcW, int srcH, float scale)
 	: dstRect()
 	, srcRect()
 	, x(x), y(y)
@@ -33,12 +42,35 @@ Sprite::Sprite(const char* path, int x, int y, int srcX, int srcY, int srcW, int
 	dstRect = new SDL_Rect();
 	dstRect->x = x;
 	dstRect->y = y;
-	dstRect->h = srcW * scale;
-	dstRect->w = srcH * scale;
+	dstRect->h = srcH * scale;
+	dstRect->w = srcW * scale;
+}
+
+Sprite::Sprite(const char* path, int x, int y, int srcX, int srcY, int srcW, int srcH, float scaleX, float scaleY)
+	: dstRect()
+	, srcRect()
+	, x(x), y(y)
+
+{
+	image = LoadImage(path);
+
+	srcRect = new SDL_Rect();
+	srcRect->x = srcX;
+	srcRect->y = srcY;
+	srcRect->w = srcW;
+	srcRect->h = srcH;
+
+	dstRect = new SDL_Rect();
+	dstRect->x = x;
+	dstRect->y = y;
+	dstRect->h = srcH * scaleX;
+	dstRect->w = srcW * scaleY;
 }
 
 Sprite::~Sprite()
 {
+	SDL_DestroyTexture(image);
+	image = NULL;
 	delete srcRect;
 	delete dstRect;
 }
