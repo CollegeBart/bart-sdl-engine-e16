@@ -86,6 +86,16 @@ public:
 
 		return NumberGenerated;
 	}
+	
+	float DeltaTime() 
+	{
+		float now = SDL_GetTicks();
+		if (now > last) {
+			deltaTime = ((float)(now - last)) / 1000;
+			last = now;
+		}
+		return deltaTime;
+	}
 
 	void Init();
 	void Init(char* title, int width, int height);
@@ -96,6 +106,8 @@ public:
 private:
 	void Update();
 	void Draw();
+	float last = 0;
+	float deltaTime = 0.0;
 	
 	// States
 	bool isRunning;

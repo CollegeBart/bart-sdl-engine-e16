@@ -21,6 +21,14 @@ void Wqt::Update()
 	{
 		std::cout << "A R" << std::endl;
 	}
+	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_A))
+	{
+		std::cout << "A" << std::endl;
+	}
+	if (gInput->IsControllerButtonReleased(gInput->controller1, SDL_CONTROLLER_BUTTON_A))
+	{
+		std::cout << "A R" << std::endl;
+	}
 	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_B))
 	{
 		std::cout << "B" << std::endl;

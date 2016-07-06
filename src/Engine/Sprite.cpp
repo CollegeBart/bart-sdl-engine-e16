@@ -17,7 +17,7 @@ Sprite::Sprite(const char * path)
 	image = LoadImage(path);
 }
 
-Sprite::Sprite(const char* path, int x, int y)
+Sprite::Sprite(const char* path, float x, float y)
 	: dstRect(nullptr)
 	, srcRect(nullptr)
 	, x(x), y(y)
@@ -25,7 +25,7 @@ Sprite::Sprite(const char* path, int x, int y)
 	image = LoadImage(path);
 }
 
-Sprite::Sprite(const char* path, int x, int y, int w, int h)
+Sprite::Sprite(const char* path, float x, float y, int w, int h)
 	: dstRect(nullptr)
 	, srcRect(nullptr)
 	, x(x), y(y)
@@ -45,7 +45,7 @@ Sprite::Sprite(const char* path, int x, int y, int w, int h)
 	dstRect->h = h;
 }
 
-Sprite::Sprite(const char * path, int x, int y, int srcX, int srcY, int srcW, int srcH, float scale)
+Sprite::Sprite(const char * path, float x, float y, int srcX, int srcY, int srcW, int srcH, float scale)
 	: dstRect()
 	, srcRect()
 	, x(x), y(y)
@@ -66,7 +66,7 @@ Sprite::Sprite(const char * path, int x, int y, int srcX, int srcY, int srcW, in
 	dstRect->w = srcW * scale;
 }
 
-Sprite::Sprite(const char* path, int x, int y, int srcX, int srcY, int srcW, int srcH, float scaleX, float scaleY)
+Sprite::Sprite(const char* path, float x, float y, int srcX, int srcY, int srcW, int srcH, float scaleX, float scaleY)
 	: dstRect()
 	, srcRect()
 	, x(x), y(y)
@@ -97,7 +97,7 @@ Sprite::~Sprite()
 
 void Sprite::Update()
 {
-	std::cout << "Sprite::Update" << std::endl;
+	
 }
 
 void Sprite::Draw()

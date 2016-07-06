@@ -14,13 +14,13 @@ class Sprite
 public:
 	Sprite();
 	Sprite(const char* path);
-	Sprite(const char* path, int x, int y);
-	Sprite(const char* path, int x, int y, int w, int h);
+	Sprite(const char* path, float x, float y);
+	Sprite(const char* path, float x, float y, int w, int h);
 
-	Sprite(const char* path, int x, int y, int srcX,
+	Sprite(const char* path, float x, float y, int srcX,
 		int srcY, int srcW, int srcH, float scale = 1.0f);
 
-	Sprite(const char* path, int x, int y,	int srcX,
+	Sprite(const char* path, float x, float y,	int srcX,
 		int srcY, int srcW, int srcH, float scaleX, float scaleY);
 
 	virtual ~Sprite();
@@ -42,7 +42,7 @@ public:
 		srcRect->w = w;
 	}
 
-	void SetDstRect(int x, int y, int h, int w, float scaleY, float scaleX)
+	void SetDstRect(float x, float y, int h, int w, float scaleY, float scaleX)
 	{
 		this->x = x;
 		this->y = y;
