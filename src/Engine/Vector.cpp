@@ -40,13 +40,13 @@ void Vector::Reflect(Axis axis)
 {
 	switch (axis)
 	{
-		case 0:
+	case Axis::X:
 			x = -x;
 			break;
-		case 1:
+	case Axis::Y:
 			y = -y;
 			break;
-		case 2:
+	case Axis::Z:
 			z = -z;
 			break;
 	}
