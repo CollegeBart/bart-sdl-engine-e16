@@ -13,6 +13,7 @@ enum ResolutionSide
 
 #define gEngine Engine::GetInstance()
 #define gInput gEngine->GetInput()
+#define gResources gEngine->GetResources()
 
 #include <iostream>
 #include <vector>
@@ -24,6 +25,7 @@ enum ResolutionSide
 #include "Utils.h"
 #include "Input.h"
 #include "Component.h"
+#include "Resources.h"
 
 class Engine
 {
@@ -52,14 +54,19 @@ private:
 #pragma endregion
 public:
 
-	SDL_Renderer* const GetRenderer() const
+	SDL_Renderer* const GetRenderer() const	
 	{
 		return renderer;
 	}
 
-	Input* const GetInput() const
+	Input* const GetInput() const 
 	{
 		return input;
+	}
+
+	Resources* const GetResources() const
+	{
+		return resources;
 	}
 
 	void const GetScreenRes(int res[SIZE])
@@ -121,5 +128,6 @@ private:
 
 	// Inputs
 	Input* input;
+	Resources* resources;
 
 };

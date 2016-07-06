@@ -1,10 +1,5 @@
 #pragma once
 
-#include <iostream>
-
-#include "SDL.h"
-#include "SDL_image.h"
-
 #include "Engine.h"
 #include "Component.h"
 
@@ -27,6 +22,33 @@ public:
 
 	float GetX() { return x; }
 	float GetY() { return y; }
+
+	void SetTexture(const char* path)
+	{
+		image = gResources->GetTexture(path);
+	}
+
+	void SetTexture(SDL_Texture* tex)
+	{
+		SetTexture("", tex);
+	}
+
+	void SetTexture(const char* path, SDL_Texture* tex)
+	{
+		if (gResources->GetTexture(tex))
+		{
+			image = tex;
+		}
+		else
+		if (strcmp(path, ""))
+		{
+			image = gResources->GetTexture(path);
+		}
+		else
+		{
+			printf("Path is invalid: %s! SDL Error: %s\n", path, SDL_GetError());
+		}
+	}
 
 	void SetPosition(float x, float y)
 	{
@@ -54,7 +76,7 @@ public:
 
 	virtual void Update();
 	void Draw();
-	void ReloadImage(const char* path);
+	
 
 protected:
 	float x, y;
@@ -62,9 +84,5 @@ protected:
 	SDL_Texture* image;
 	SDL_Rect* dstRect;
 	SDL_Rect* srcRect;
-
-private:
-	
-	static SDL_Texture* LoadImage(const char* path);
 };
 
