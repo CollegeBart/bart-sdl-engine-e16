@@ -60,7 +60,7 @@ void Engine::Init(char * title, int width, int height)
 				SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
 				input = new Input();
-				resources = new Resources();
+				resources = new Resources(renderer);
 			}
 		}
 	}
