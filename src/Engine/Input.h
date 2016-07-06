@@ -37,8 +37,7 @@ private:
 	bool lastKeys[SDL_NUM_SCANCODES];
 
 	SDL_GameController *controller = nullptr;
-	bool controllerButtons[SDL_CONTROLLER_BUTTON_MAX];
-	bool lastControllerButtons[SDL_CONTROLLER_BUTTON_MAX];
+	int lastControllerButtons = 15;
 	void OpenControllers();
 
 	bool mouseButtons[NUM_MOUSE_BUTTONS];
