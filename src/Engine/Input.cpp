@@ -72,7 +72,6 @@ bool Input::IsKeyReleased(SDL_Scancode key)
 
 bool Input::IsControllerButtonPressed(SDL_GameControllerButton button)
 {
-	
 	bool isPressed = false;
 	if (lastControllerButtons != button && SDL_GameControllerGetButton(controller, button))
 	{

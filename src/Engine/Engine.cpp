@@ -8,6 +8,7 @@ Engine::Engine()
 	, isPaused(false)
 	, window(nullptr)
 	, renderer(nullptr)
+	, resources(nullptr)
 
 {
 	resolution[WIDTH] = DEFAULT_SCREEN_WIDTH;
@@ -17,6 +18,9 @@ Engine::Engine()
 Engine::~Engine()
 {
 	Stop();
+
+	delete input;
+	delete resources;
 
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -56,6 +60,7 @@ void Engine::Init(char * title, int width, int height)
 				SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
 				input = new Input();
+				resources = new Resources();
 			}
 		}
 	}
@@ -102,8 +107,6 @@ int Engine::Run()
 
 		SDL_UpdateWindowSurface(window);
 	}
-
-	delete input;
 
 	return 0;
 }
