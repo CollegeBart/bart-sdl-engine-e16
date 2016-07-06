@@ -3,7 +3,7 @@
 Wqt::Wqt()
 	: Sprite("wqt.jpg", 0, 0)
 {
-
+	
 }
 
 Wqt::~Wqt()
@@ -13,65 +13,117 @@ Wqt::~Wqt()
 
 void Wqt::Update()
 {
-	if (gInput->IsControllerButtonPressed(SDL_CONTROLLER_BUTTON_A)) 
+	if (gInput->IsControllerButtonPressed(gInput->controller1,SDL_CONTROLLER_BUTTON_A)) 
 	{
 		std::cout << "A" << std::endl;
 	}
-	if (gInput->IsControllerButtonReleased(SDL_CONTROLLER_BUTTON_A)) 
+	if (gInput->IsControllerButtonReleased(gInput->controller1, SDL_CONTROLLER_BUTTON_A))
 	{
 		std::cout << "A R" << std::endl;
 	}
-	if (gInput->IsControllerButtonPressed(SDL_CONTROLLER_BUTTON_B))
+	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_B))
 	{
 		std::cout << "B" << std::endl;
 	}
-	if (gInput->IsControllerButtonPressed(SDL_CONTROLLER_BUTTON_X))
+	if (gInput->IsControllerButtonReleased(gInput->controller1, SDL_CONTROLLER_BUTTON_B))
+	{
+		std::cout << "B R" << std::endl;
+	}
+	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_X))
 	{
 		std::cout << "X" << std::endl;
 	}
-	if (gInput->IsControllerButtonPressed(SDL_CONTROLLER_BUTTON_Y))
+	if (gInput->IsControllerButtonReleased(gInput->controller1, SDL_CONTROLLER_BUTTON_X))
+	{
+		std::cout << "X R" << std::endl;
+	}
+	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_Y))
 	{
 		std::cout << "Y" << std::endl;
 	}
-	if (gInput->IsControllerButtonPressed(SDL_CONTROLLER_BUTTON_BACK))
+	if (gInput->IsControllerButtonReleased(gInput->controller1, SDL_CONTROLLER_BUTTON_Y))
+	{
+		std::cout << "Y R" << std::endl;
+	}
+	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_BACK))
 	{
 		std::cout << "BACK" << std::endl;
 	}
-	if (gInput->IsControllerButtonPressed(SDL_CONTROLLER_BUTTON_START))
+	if (gInput->IsControllerButtonReleased(gInput->controller1, SDL_CONTROLLER_BUTTON_BACK))
+	{
+		std::cout << "BACK R" << std::endl;
+	}
+	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_START))
 	{
 		std::cout << "START" << std::endl;
 	}
-	if (gInput->IsControllerButtonPressed(SDL_CONTROLLER_BUTTON_LEFTSHOULDER))
+	if (gInput->IsControllerButtonReleased(gInput->controller1, SDL_CONTROLLER_BUTTON_START))
+	{
+		std::cout << "START R" << std::endl;
+	}
+	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_LEFTSHOULDER))
 	{
 		std::cout << "L1" << std::endl;
 	}
-	if (gInput->IsControllerButtonPressed(SDL_CONTROLLER_BUTTON_RIGHTSHOULDER))
+	if (gInput->IsControllerButtonReleased(gInput->controller1, SDL_CONTROLLER_BUTTON_LEFTSHOULDER))
+	{
+		std::cout << "L1 R" << std::endl;
+	}
+	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER))
 	{
 		std::cout << "R1" << std::endl;
 	}
-	if (gInput->IsControllerButtonPressed(SDL_CONTROLLER_BUTTON_LEFTSTICK))
+	if (gInput->IsControllerButtonReleased(gInput->controller1, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER))
+	{
+		std::cout << "R1 R" << std::endl;
+	}
+	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_LEFTSTICK))
 	{
 		std::cout << "L3" << std::endl;
 	}
-	if (gInput->IsControllerButtonPressed(SDL_CONTROLLER_BUTTON_RIGHTSTICK))
+	if (gInput->IsControllerButtonReleased(gInput->controller1, SDL_CONTROLLER_BUTTON_LEFTSTICK))
+	{
+		std::cout << "L3 R" << std::endl;
+	}
+	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_RIGHTSTICK))
 	{
 		std::cout << "R3" << std::endl;
 	}
-	if (gInput->IsControllerButtonPressed(SDL_CONTROLLER_BUTTON_DPAD_DOWN))
+	if (gInput->IsControllerButtonReleased(gInput->controller1, SDL_CONTROLLER_BUTTON_RIGHTSTICK))
+	{
+		std::cout << "R3" << std::endl;
+	}
+	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_DPAD_DOWN))
 	{
 		std::cout << "DOWN" << std::endl;
 	}
-	if (gInput->IsControllerButtonPressed(SDL_CONTROLLER_BUTTON_DPAD_LEFT))
+	if (gInput->IsControllerButtonReleased(gInput->controller1, SDL_CONTROLLER_BUTTON_DPAD_DOWN))
+	{
+		std::cout << "DOWN R" << std::endl;
+	}
+	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_DPAD_LEFT))
 	{
 		std::cout << "LEFT" << std::endl;
 	}
-	if (gInput->IsControllerButtonPressed(SDL_CONTROLLER_BUTTON_DPAD_RIGHT))
+	if (gInput->IsControllerButtonReleased(gInput->controller1, SDL_CONTROLLER_BUTTON_DPAD_LEFT))
+	{
+		std::cout << "LEFT R" << std::endl;
+	}
+	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_DPAD_RIGHT))
 	{
 		std::cout << "RIGHT" << std::endl;
 	}
-	if (gInput->IsControllerButtonPressed(SDL_CONTROLLER_BUTTON_DPAD_UP))
+	if (gInput->IsControllerButtonReleased(gInput->controller1, SDL_CONTROLLER_BUTTON_DPAD_RIGHT))
+	{
+		std::cout << "RIGHT R" << std::endl;
+	}
+	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_DPAD_UP))
 	{
 		std::cout << "UP" << std::endl;
+	}
+	if (gInput->IsControllerButtonReleased(gInput->controller1, SDL_CONTROLLER_BUTTON_DPAD_UP))
+	{
+		std::cout << "UP R" << std::endl;
 	}
 
 

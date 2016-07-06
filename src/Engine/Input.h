@@ -19,9 +19,11 @@ public:
 	bool IsKeyHeld(SDL_Scancode key) const;
 	bool IsKeyReleased(SDL_Scancode key);
 
-	bool IsControllerButtonPressed(SDL_GameControllerButton button);
-	bool IsControllerButtonHeld(SDL_GameControllerButton button) const;
-	bool IsControllerButtonReleased(SDL_GameControllerButton button);
+	SDL_GameController *controller1 = nullptr;
+	SDL_GameController *controller2 = nullptr;
+	bool IsControllerButtonPressed(SDL_GameController* controller, SDL_GameControllerButton button);
+	bool IsControllerButtonHeld(SDL_GameController* controller, SDL_GameControllerButton button) const;
+	bool IsControllerButtonReleased(SDL_GameController* controller, SDL_GameControllerButton button);
 
 	bool IsMouseButtonPressed(int button) const;
 	bool IsMouseButtonHeld(int button) const;
@@ -36,8 +38,7 @@ private:
 	bool keys[SDL_NUM_SCANCODES];
 	bool lastKeys[SDL_NUM_SCANCODES];
 
-	SDL_GameController *controller = nullptr;
-	int lastControllerButtons = 15;
+	bool lastControllerButtons[SDL_CONTROLLER_BUTTON_MAX];
 	void OpenControllers();
 
 	bool mouseButtons[NUM_MOUSE_BUTTONS];
