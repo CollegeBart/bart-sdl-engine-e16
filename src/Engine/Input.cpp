@@ -8,6 +8,7 @@ Input::Input()
 	memset(mouseButtons, 0, sizeof(bool) * NUM_MOUSE_BUTTONS);
 	memset(lastMouseButtons, 0, sizeof(bool) * NUM_MOUSE_BUTTONS);
 
+	memset(lastControllerButtons, 0, sizeof(bool) * SDL_CONTROLLER_BUTTON_MAX);
 	SDL_GameControllerAddMappingsFromFile("gamecontrollerdb.txt");
 	OpenControllers();
 }
@@ -70,36 +71,35 @@ bool Input::IsKeyReleased(SDL_Scancode key)
 	return isReleased;
 }
 
-bool Input::IsControllerButtonPressed(SDL_GameControllerButton button)
+bool Input::IsControllerButtonPressed(SDL_GameController* controller, SDL_GameControllerButton button)
 {
-	
 	bool isPressed = false;
-	if (lastControllerButtons != button && SDL_GameControllerGetButton(controller, button))
+	if (!lastControllerButtons[button] && SDL_GameControllerGetButton(controller, button))
 	{
 		isPressed = true;
 	}
 	if (isPressed) 
 	{
-		lastControllerButtons = button;
+		lastControllerButtons[button] = true;
 	}
 	return isPressed;
 }
 
-bool Input::IsControllerButtonHeld(SDL_GameControllerButton button) const
+bool Input::IsControllerButtonHeld(SDL_GameController* controller, SDL_GameControllerButton button) const
 {
 	return SDL_GameControllerGetButton(controller, button);
 }
 
-bool Input::IsControllerButtonReleased(SDL_GameControllerButton button)
+bool Input::IsControllerButtonReleased(SDL_GameController* controller, SDL_GameControllerButton button)
 {
 	bool isReleased = false;
-	if (lastControllerButtons == button && !SDL_GameControllerGetButton(controller, button))
+	if (lastControllerButtons[button] && !SDL_GameControllerGetButton(controller, button))
 	{
 		isReleased = true;
 	}
 	if (isReleased)
 	{
-		lastControllerButtons = button;
+		lastControllerButtons[button] = false;
 	}
 	return isReleased;
 }
@@ -140,15 +140,22 @@ Point Input::GetMousePosition(Point& position) const
 
 void Input::OpenControllers()
 {
-	/* Open the first available controller. */
+	/* Open available controllers. */
 	for (int i = 0; i < 1; ++i) {
-		controller = SDL_GameControllerOpen(i);
-		if (controller) {
-			std::cout << "Controller :" << SDL_GameControllerName(controller) << " Connected!" << std::endl;
-			break;
+		if (controller1) {
+			controller2 = SDL_GameControllerOpen(i);
+			if (controller2) {
+				std::cout << "Controller :" << SDL_GameControllerName(controller2) << "Connected as controller2!" << std::endl;
+			}
+		}
+		if (!controller1) {
+			controller1 = SDL_GameControllerOpen(i);
+			if (controller1) {
+				std::cout << "Controller :" << SDL_GameControllerName(controller1) << " Connected as controller1!" << std::endl;
+			}
 		}
 		else {
-			fprintf(stderr, "Could not open gamecontroller %i: %s\n", i, SDL_GetError());
+			fprintf(stderr, "Could not open gamecontroller %i: %s\n    Did you add gamecontrollerdb.txt in your project file??", i, SDL_GetError());
 		}
 	}
 }
