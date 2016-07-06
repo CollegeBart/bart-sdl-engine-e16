@@ -39,6 +39,7 @@ private:
 	bool lastKeys[SDL_NUM_SCANCODES];
 
 	bool lastControllerButtons[SDL_CONTROLLER_BUTTON_MAX];
+	bool controllerButtons[SDL_CONTROLLER_BUTTON_MAX];
 	void OpenControllers();
 
 	bool mouseButtons[NUM_MOUSE_BUTTONS];

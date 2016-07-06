@@ -83,7 +83,6 @@ int Engine::Run()
 		while (SDL_PollEvent(&event) != 0)
 		{
 			input->Poll(event);
-
 			switch (event.type)
 			{
 			case SDL_QUIT:

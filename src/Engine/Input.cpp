@@ -9,6 +9,7 @@ Input::Input()
 	memset(lastMouseButtons, 0, sizeof(bool) * NUM_MOUSE_BUTTONS);
 
 	memset(lastControllerButtons, 0, sizeof(bool) * SDL_CONTROLLER_BUTTON_MAX);
+	memset(controllerButtons, 0, sizeof(bool) * SDL_CONTROLLER_BUTTON_MAX);
 	SDL_GameControllerAddMappingsFromFile("gamecontrollerdb.txt");
 	OpenControllers();
 }
@@ -26,12 +27,10 @@ void Input::Poll(const SDL_Event& e)
 		lastKeys[e.key.keysym.scancode] = false;
 		keys[e.key.keysym.scancode] = true;
 		break;
-
 	case SDL_KEYUP:
 		lastKeys[e.key.keysym.scancode] = true;
 		keys[e.key.keysym.scancode] = false;
 		break;
-
 	case SDL_MOUSEMOTION:
 		break;
 
@@ -40,7 +39,61 @@ void Input::Poll(const SDL_Event& e)
 
 	case SDL_MOUSEBUTTONUP:
 		break;
-
+	case SDL_JOYBUTTONDOWN:
+		lastControllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
+		controllerButtons[(SDL_GameControllerButton)e.cbutton.button] = true;
+		break;
+	case SDL_JOYBUTTONUP:
+		//lastControllerButtons[(SDL_GameControllerButton)e.cbutton.button] = true;
+		lastControllerButtons[SDL_GameControllerGetButton(controller1, (SDL_GameControllerButton)e.cbutton.button)] = false;
+		controllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
+		break;
+	case SDL_JOYHATMOTION:
+		if((SDL_GameControllerButton)e.jhat.value == 4)
+		{
+			if (!lastControllerButtons[12])
+			{
+				lastControllerButtons[12] = true;
+			}
+			else
+			{
+				lastControllerButtons[12] = false;
+			}
+		}
+		if ((SDL_GameControllerButton)e.jhat.value == 2)
+		{
+			if (!lastControllerButtons[14])
+			{
+				lastControllerButtons[14] = true;
+			}
+			else
+			{
+				lastControllerButtons[14] = false;
+			}
+		}
+		if ((SDL_GameControllerButton)e.jhat.value == 3)
+		{
+			if (!lastControllerButtons[11])
+			{
+				lastControllerButtons[11] = true;
+			}
+			else
+			{
+				lastControllerButtons[11] = false;
+			}
+		}
+		if ((SDL_GameControllerButton)e.jhat.value == 1)
+		{
+			if (!lastControllerButtons[11])
+			{
+				lastControllerButtons[11] = true;
+			}
+			else
+			{
+				lastControllerButtons[11] = false;
+			}
+		}
+		break;
 	default:
 		break;
 	}
@@ -103,6 +156,7 @@ bool Input::IsControllerButtonReleased(SDL_GameController* controller, SDL_GameC
 	}
 	return isReleased;
 }
+
 
 bool Input::IsMouseButtonPressed(int button) const
 {
