@@ -93,7 +93,7 @@ bool Input::IsControllerButtonHeld(SDL_GameControllerButton button) const
 bool Input::IsControllerButtonReleased(SDL_GameControllerButton button)
 {
 	bool isReleased = false;
-	if (lastControllerButtons == button || lastControllerButtons == 15 && !SDL_GameControllerGetButton(controller, button))
+	if (lastControllerButtons == button && !SDL_GameControllerGetButton(controller, button))
 	{
 		isReleased = true;
 	}
