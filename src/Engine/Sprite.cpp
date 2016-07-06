@@ -25,6 +25,26 @@ Sprite::Sprite(const char* path, int x, int y)
 	image = LoadImage(path);
 }
 
+Sprite::Sprite(const char* path, int x, int y, int w, int h)
+	: dstRect(nullptr)
+	, srcRect(nullptr)
+	, x(x), y(y)
+{
+	image = LoadImage(path);
+
+	srcRect = new SDL_Rect();
+	srcRect->x = 0;
+	srcRect->y = 0;
+	srcRect->w = w;
+	srcRect->h = h;
+
+	dstRect = new SDL_Rect();
+	dstRect->x = x;
+	dstRect->y = y;
+	dstRect->w = w;
+	dstRect->h = h;
+}
+
 Sprite::Sprite(const char * path, int x, int y, int srcX, int srcY, int srcW, int srcH, float scale)
 	: dstRect()
 	, srcRect()
@@ -92,6 +112,18 @@ void Sprite::Draw()
 
 		//Render texture to screen
 		SDL_RenderCopy(gEngine->GetRenderer(), image, srcRect, dstRect);
+	}
+}
+
+void Sprite::ReloadImage(const char* path)
+{
+	if (image == NULL)
+	{
+		printf("Unable to load image %s! SDL_image Error: %s, no default image found\n", path, IMG_GetError());
+	}
+	else
+	{
+		image = LoadImage(path);
 	}
 }
 
