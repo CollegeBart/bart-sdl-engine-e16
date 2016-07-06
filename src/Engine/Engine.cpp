@@ -116,6 +116,7 @@ void Engine::Stop()
 void Engine::Update()
 {
 	FOREACH_COMPONENT(Update());
+	DeltaTime();
 }
 
 void Engine::Draw()

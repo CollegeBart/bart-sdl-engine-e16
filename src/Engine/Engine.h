@@ -87,27 +87,27 @@ public:
 		return NumberGenerated;
 	}
 	
-	float DeltaTime() 
-	{
-		float now = SDL_GetTicks();
-		if (now > last) {
-			deltaTime = ((float)(now - last)) / 1000;
-			last = now;
-		}
-		return deltaTime;
-	}
-
 	void Init();
 	void Init(char* title, int width, int height);
 	void Start();
 	int Run();
 	void Stop();
+	float deltaTime;
 
 private:
 	void Update();
 	void Draw();
-	float last = 0;
-	float deltaTime = 0.0;
+	float lastTick = 0;
+
+	float DeltaTime()
+	{
+		float now = SDL_GetTicks();
+		if (now > lastTick) {
+			deltaTime = ((float)(now - lastTick)) / 1000;
+			lastTick = now;
+		}
+		return deltaTime;
+	}
 	
 	// States
 	bool isRunning;
