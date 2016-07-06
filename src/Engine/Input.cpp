@@ -8,6 +8,8 @@ Input::Input()
 	memset(mouseButtons, 0, sizeof(bool) * NUM_MOUSE_BUTTONS);
 	memset(lastMouseButtons, 0, sizeof(bool) * NUM_MOUSE_BUTTONS);
 
+	mousePosition = Point(0, 0);
+
 	memset(lastControllerButtons, 0, sizeof(bool) * SDL_CONTROLLER_BUTTON_MAX);
 	SDL_GameControllerAddMappingsFromFile("gamecontrollerdb.txt");
 	OpenControllers();
@@ -33,6 +35,8 @@ void Input::Poll(const SDL_Event& e)
 		break;
 
 	case SDL_MOUSEMOTION:
+		mousePosition.x = e.motion.x;
+		mousePosition.y = e.motion.y;
 		break;
 
 	case SDL_MOUSEBUTTONDOWN:
@@ -121,19 +125,18 @@ bool Input::IsMouseButtonReleased(int button) const
 
 float Input::MouseX() const
 {
-	return 0.0f;
+	return mousePosition.x;
 }
 
 float Input::MouseY() const
 {
-	return 0.0f;
+	return mousePosition.y;
 }
 
 Point Input::GetMousePosition(Point& position) const
 {
 	// Calculer
-	position.x = 0;
-	position.y = 0;
+	position = mousePosition;
 
 	return position;
 }
