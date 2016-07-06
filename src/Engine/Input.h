@@ -43,5 +43,8 @@ private:
 
 	bool mouseButtons[NUM_MOUSE_BUTTONS];
 	bool lastMouseButtons[NUM_MOUSE_BUTTONS];
+
+	//Might need SDL_MouseMotionEvent instead
+	//Point mousePosition;
 };
 
