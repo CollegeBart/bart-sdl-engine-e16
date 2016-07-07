@@ -16,7 +16,7 @@ FileReader::~FileReader()
 {
 }
 
-std::string FileReader::Read(std::string& fileContent) const
+void FileReader::Read(std::string& fileContent) const
 {
 	std::ifstream file(path);
 	std::string line;
@@ -26,6 +26,4 @@ std::string FileReader::Read(std::string& fileContent) const
 		fileContent += line;
 		fileContent.push_back('\n');
 	}
-
-	return fileContent;
 }
