@@ -48,7 +48,7 @@ void Input::Poll(const SDL_Event& e)
 		controllerButtons[(SDL_GameControllerButton)e.cbutton.button] = true;
 		break;
 	case SDL_JOYBUTTONUP:
-		//lastControllerButtons[(SDL_GameControllerButton)e.cbutton.button] = true;
+		lastControllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
 		lastControllerButtons[SDL_GameControllerGetButton(controller1, (SDL_GameControllerButton)e.cbutton.button)] = false;
 		controllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
 		break;
