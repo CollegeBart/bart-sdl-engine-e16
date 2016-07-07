@@ -1,9 +1,21 @@
 #include "Wqt.h"
 #include "Input.h"
+
+#include "minijson_reader.hpp"
+
 Wqt::Wqt()
 	: Sprite("wqt.jpg", 0, 0)
 {
-	
+	// Exemple minijson
+	int content;
+	char buffer[] = "{ \"height\":88, \"width\":100 }";
+	minijson::buffer_context ctx(buffer, sizeof(buffer) - 1);
+	minijson::parse_object(ctx, [&](const char* k, minijson::value v)
+	{
+		minijson::dispatch(k) << "height" >> [&] { content = v.as_double(); };
+	});
+	std::cout << content << std::endl;
+	// Fin exemple minijson
 }
 
 Wqt::~Wqt()
@@ -40,8 +52,6 @@ void Wqt::Update()
 	if (gInput->IsControllerButtonPressed(gInput->controller1, SDL_CONTROLLER_BUTTON_DPAD_RIGHT)) {
 		std::cout << "RIGHT" << std::endl;
 	}
-
-
 
 	if(gInput->IsKeyPressed(SDL_SCANCODE_SPACE))
 	{

@@ -4,7 +4,7 @@ Sprite::Sprite()
 	: image(nullptr)
 	, dstRect()
 	, srcRect()
-	, x(0), y(0)
+	, x(0), y(0), srcX(0), srcY(0)
 { 
 }
 
@@ -20,7 +20,7 @@ Sprite::Sprite(const char * path)
 Sprite::Sprite(const char* path, float x, float y)
 	: dstRect(nullptr)
 	, srcRect(nullptr)
-	, x(x), y(y)
+	, x(x), y(y), srcX(0), srcY(0)
 {
 	image = gResources->GetTexture(path);
 }
@@ -28,7 +28,7 @@ Sprite::Sprite(const char* path, float x, float y)
 Sprite::Sprite(const char* path, float x, float y, int w, int h)
 	: dstRect(nullptr)
 	, srcRect(nullptr)
-	, x(x), y(y)
+	, x(x), y(y), srcX(0), srcY(0)
 {
 	image = gResources->GetTexture(path);
 
@@ -48,7 +48,7 @@ Sprite::Sprite(const char* path, float x, float y, int w, int h)
 Sprite::Sprite(const char * path, float x, float y, int srcX, int srcY, int srcW, int srcH, float scale)
 	: dstRect()
 	, srcRect()
-	, x(x), y(y)
+	, x(x), y(y), srcX(srcX), srcY(srcY)
 {
 	image = gResources->GetTexture(path);
 
@@ -68,7 +68,7 @@ Sprite::Sprite(const char * path, float x, float y, int srcX, int srcY, int srcW
 Sprite::Sprite(const char* path, float x, float y, int srcX, int srcY, int srcW, int srcH, float scaleX, float scaleY)
 	: dstRect()
 	, srcRect()
-	, x(x), y(y)
+	, x(x), y(y), srcX(srcX), srcY(srcY)
 
 {
 	image = gResources->GetTexture(path);
@@ -107,6 +107,12 @@ void Sprite::Draw()
 		{
 			dstRect->x = x;
 			dstRect->y = y;
+		}
+
+		if (srcRect != nullptr)
+		{
+			srcRect->x = srcX;
+			srcRect->y = srcY;
 		}
 
 		//Render texture to screen

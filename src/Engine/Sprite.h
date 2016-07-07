@@ -23,6 +23,9 @@ public:
 	float GetX() { return x; }
 	float GetY() { return y; }
 
+	float GetSrcX() { return srcX; }
+	float GetSrcY() { return srcY; }
+
 	void SetTexture(const char* path)
 	{
 		image = gResources->GetTexture(path);
@@ -56,14 +59,16 @@ public:
 		this->y = y;
 	}
 
-	void SetSrcPosition(int x, int y)
+	void SetSrcPosition(float x, float y)
 	{
-		srcRect->x = x;
-		srcRect->y = y;
+		srcX = x;
+		srcY = y;
 	}
 
-	void SetSrcRect(int x, int y, int h, int w)
+	void SetSrcRect(float x, float y, int h, int w)
 	{
+		srcX = x;
+		srcY = y;
 		srcRect->x = x;
 		srcRect->y = y;
 		srcRect->h = h;
@@ -85,7 +90,7 @@ public:
 	
 
 protected:
-	float x, y;
+	float x, y, srcX, srcY;
 
 	SDL_Texture* image;
 	SDL_Rect* dstRect;
