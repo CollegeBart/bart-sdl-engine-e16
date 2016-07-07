@@ -96,7 +96,7 @@ Sprite::~Sprite()
 
 void Sprite::Update()
 {
-	std::cout << "Sprite::Update" << std::endl;
+	
 }
 
 void Sprite::Draw()
