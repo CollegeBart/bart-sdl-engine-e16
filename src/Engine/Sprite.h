@@ -56,6 +56,12 @@ public:
 		this->y = y;
 	}
 
+	void SetSrcPosition(int x, int y)
+	{
+		srcRect->x = x;
+		srcRect->y = y;
+	}
+
 	void SetSrcRect(int x, int y, int h, int w)
 	{
 		srcRect->x = x;

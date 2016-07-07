@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{143F2E9B-AE0B-4E1D-ACCD-194B8CC76904}</ProjectGuid>
+    <ProjectGuid>{D996680F-3965-4B1F-A10F-C8101ABD5313}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SDLEngine</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>

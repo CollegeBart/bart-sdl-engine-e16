@@ -29,29 +29,39 @@ void Input::Poll(const SDL_Event& e)
 		lastKeys[e.key.keysym.scancode] = false;
 		keys[e.key.keysym.scancode] = true;
 		break;
+
 	case SDL_KEYUP:
 		lastKeys[e.key.keysym.scancode] = true;
 		keys[e.key.keysym.scancode] = false;
 		break;
+
 	case SDL_MOUSEMOTION:
 		mousePosition.x = e.motion.x;
 		mousePosition.y = e.motion.y;
 		break;
 
 	case SDL_MOUSEBUTTONDOWN:
+		//e.button.button = Number from 1 to 5, -1 to get the array index
+		lastMouseButtons[e.button.button - 1] = false;
+		mouseButtons[e.button.button - 1] = true;
 		break;
 
 	case SDL_MOUSEBUTTONUP:
+		lastMouseButtons[e.button.button - 1] = true;
+		mouseButtons[e.button.button - 1] = false;
 		break;
+
 	case SDL_JOYBUTTONDOWN:
 		lastControllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
 		controllerButtons[(SDL_GameControllerButton)e.cbutton.button] = true;
 		break;
+
 	case SDL_JOYBUTTONUP:
 		lastControllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
 		lastControllerButtons[SDL_GameControllerGetButton(controller1, (SDL_GameControllerButton)e.cbutton.button)] = false;
 		controllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
 		break;
+
 	case SDL_JOYHATMOTION:
 		if((SDL_GameControllerButton)e.jhat.value == 4)
 		{
@@ -98,6 +108,7 @@ void Input::Poll(const SDL_Event& e)
 			}
 		}
 		break;
+
 	default:
 		break;
 	}
@@ -162,19 +173,30 @@ bool Input::IsControllerButtonReleased(SDL_GameController* controller, SDL_GameC
 }
 
 
-bool Input::IsMouseButtonPressed(int button) const
+bool Input::IsMouseButtonPressed(int button)
 {
-	return false;
+	//e.button.button = Number from 1 to 5, -1 to get the array index
+	bool isPressed = !lastMouseButtons[button-1] && mouseButtons[button-1];
+	if (isPressed)
+	{
+		lastMouseButtons[button - 1] = mouseButtons[button - 1];
+	}
+	return isPressed;
 }
 
 bool Input::IsMouseButtonHeld(int button) const
 {
-	return false;
+	return mouseButtons[button - 1];
 }
 
-bool Input::IsMouseButtonReleased(int button) const
+bool Input::IsMouseButtonReleased(int button)
 {
-	return false;
+	bool isReleased = lastMouseButtons[button - 1] && !mouseButtons[button - 1];
+	if (isReleased)
+	{
+		lastMouseButtons[button - 1] = mouseButtons[button - 1];
+	}
+	return isReleased;
 }
 
 float Input::MouseX() const
