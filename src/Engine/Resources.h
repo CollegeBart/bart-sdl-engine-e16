@@ -33,8 +33,6 @@ public:
 		return nullptr;
 	}
 
-
-
 private:
 	SDL_Texture* LoadImage(const char* path);
 

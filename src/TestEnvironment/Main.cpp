@@ -8,7 +8,7 @@ int main(int argc, char* args[])
 
 	// Créer tous mes objets
 	Wqt* monCompo = new Wqt();
-
+	
 	int assert = gEngine->Run();
 
 	// Détruire tous mes objets
