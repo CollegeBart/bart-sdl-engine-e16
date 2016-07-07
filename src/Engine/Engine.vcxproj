@@ -168,6 +168,7 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="minijson_reader.hpp" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="Sprite.h" />
