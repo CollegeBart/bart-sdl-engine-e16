@@ -100,6 +100,7 @@ int Engine::Run()
 
 		if (!isPaused)
 		{
+			DeltaTime();
 			Update();
 			Draw();
 		}
@@ -118,7 +119,6 @@ void Engine::Stop()
 void Engine::Update()
 {
 	FOREACH_COMPONENT(Update());
-	DeltaTime();
 }
 
 void Engine::Draw()
