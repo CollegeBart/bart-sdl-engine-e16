@@ -25,9 +25,9 @@ public:
 	bool IsControllerButtonHeld(SDL_GameController* controller, SDL_GameControllerButton button) const;
 	bool IsControllerButtonReleased(SDL_GameController* controller, SDL_GameControllerButton button);
 
-	bool IsMouseButtonPressed(int button) const;
+	bool IsMouseButtonPressed(int button);
 	bool IsMouseButtonHeld(int button) const;
-	bool IsMouseButtonReleased(int button) const;
+	bool IsMouseButtonReleased(int button);
 
 	float MouseX() const;
 	float MouseY() const;
