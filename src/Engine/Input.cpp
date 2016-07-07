@@ -48,7 +48,7 @@ void Input::Poll(const SDL_Event& e)
 		controllerButtons[(SDL_GameControllerButton)e.cbutton.button] = true;
 		break;
 	case SDL_JOYBUTTONUP:
-		//lastControllerButtons[(SDL_GameControllerButton)e.cbutton.button] = true;
+		lastControllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
 		lastControllerButtons[SDL_GameControllerGetButton(controller1, (SDL_GameControllerButton)e.cbutton.button)] = false;
 		controllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
 		break;
@@ -198,11 +198,14 @@ Point Input::GetMousePosition(Point& position) const
 void Input::OpenControllers()
 {
 	/* Open available controllers. */
-	for (int i = 0; i < 1; ++i) {
+	for (int i = 0; i < SDL_NumJoysticks(); ++i) {
 		if (controller1) {
 			controller2 = SDL_GameControllerOpen(i);
 			if (controller2) {
 				std::cout << "Controller :" << SDL_GameControllerName(controller2) << "Connected as controller2!" << std::endl;
+			}
+			else {
+				fprintf(stderr, "Could not open gamecontroller %i: %s\nDid you add gamecontrollerdb.txt in your project file??\n Pick it up in TestEnvironement files", i, SDL_GetError());
 			}
 		}
 		if (!controller1) {
@@ -210,9 +213,9 @@ void Input::OpenControllers()
 			if (controller1) {
 				std::cout << "Controller :" << SDL_GameControllerName(controller1) << " Connected as controller1!" << std::endl;
 			}
-		}
-		else {
-			fprintf(stderr, "Could not open gamecontroller %i: %s\n    Did you add gamecontrollerdb.txt in your project file??", i, SDL_GetError());
+			else {
+				fprintf(stderr, "Could not open gamecontroller %i: %s\nDid you add gamecontrollerdb.txt in your project file??\n Pick it up in TestEnvironement files", i, SDL_GetError());
+			}
 		}
 	}
 }
