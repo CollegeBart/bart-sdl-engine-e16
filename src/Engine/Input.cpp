@@ -10,6 +10,8 @@ Input::Input()
 
 	mousePosition = Point(0, 0);
 
+	ResetMouseScroll();
+
 	memset(lastControllerButtons, 0, sizeof(bool) * SDL_CONTROLLER_BUTTON_MAX);
 	memset(controllerButtons, 0, sizeof(bool) * SDL_CONTROLLER_BUTTON_MAX);
 	SDL_GameControllerAddMappingsFromFile("gamecontrollerdb.txt");
@@ -49,6 +51,10 @@ void Input::Poll(const SDL_Event& e)
 	case SDL_MOUSEBUTTONUP:
 		lastMouseButtons[e.button.button - 1] = true;
 		mouseButtons[e.button.button - 1] = false;
+		break;
+
+	case SDL_MOUSEWHEEL:
+		mouseScrollDirection = e.wheel.y;
 		break;
 
 	case SDL_JOYBUTTONDOWN:
@@ -199,6 +205,11 @@ bool Input::IsMouseButtonReleased(int button)
 	return isReleased;
 }
 
+bool Input::IsMouseWheelScrolling() const
+{
+	return mouseScrollDirection != 0.0f;
+}
+
 float Input::MouseX() const
 {
 	return mousePosition.x;
@@ -215,6 +226,16 @@ Point Input::GetMousePosition(Point& position) const
 	position = mousePosition;
 
 	return position;
+}
+
+float Input::GetMouseScroll() const
+{
+	return mouseScrollDirection;
+}
+
+void Input::ResetMouseScroll()
+{
+	mouseScrollDirection = 0.0f;
 }
 
 void Input::OpenControllers()
