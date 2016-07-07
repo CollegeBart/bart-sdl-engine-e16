@@ -29,10 +29,15 @@ public:
 	bool IsMouseButtonHeld(int button) const;
 	bool IsMouseButtonReleased(int button);
 
+	bool IsMouseWheelScrolling() const;
+
 	float MouseX() const;
 	float MouseY() const;
 
 	Point GetMousePosition(Point& position) const;
+
+	float GetMouseScroll() const;
+	void ResetMouseScroll();
 
 private:
 	bool keys[SDL_NUM_SCANCODES];
@@ -44,6 +49,8 @@ private:
 
 	bool mouseButtons[NUM_MOUSE_BUTTONS];
 	bool lastMouseButtons[NUM_MOUSE_BUTTONS];
+
+	float mouseScrollDirection;
 
 	//Might need SDL_MouseMotionEvent instead
 	Point mousePosition;

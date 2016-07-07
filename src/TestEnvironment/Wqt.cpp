@@ -125,4 +125,11 @@ void Wqt::Update()
 	std::cout << "Side button 2 release!" << std::endl;
 	}*/
 #pragma endregion
+
+#pragma region MouseWheelTests
+	if (gInput->IsMouseWheelScrolling())
+	{
+		std::cout << "Mouse scroll: " << gInput->GetMouseScroll() << std::endl;
+	}
+#pragma endregion
 }
