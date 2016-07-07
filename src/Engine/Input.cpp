@@ -29,10 +29,12 @@ void Input::Poll(const SDL_Event& e)
 		lastKeys[e.key.keysym.scancode] = false;
 		keys[e.key.keysym.scancode] = true;
 		break;
+
 	case SDL_KEYUP:
 		lastKeys[e.key.keysym.scancode] = true;
 		keys[e.key.keysym.scancode] = false;
 		break;
+
 	case SDL_MOUSEMOTION:
 		mousePosition.x = e.motion.x;
 		mousePosition.y = e.motion.y;
@@ -43,15 +45,18 @@ void Input::Poll(const SDL_Event& e)
 
 	case SDL_MOUSEBUTTONUP:
 		break;
+
 	case SDL_JOYBUTTONDOWN:
 		lastControllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
 		controllerButtons[(SDL_GameControllerButton)e.cbutton.button] = true;
 		break;
+
 	case SDL_JOYBUTTONUP:
 		//lastControllerButtons[(SDL_GameControllerButton)e.cbutton.button] = true;
 		lastControllerButtons[SDL_GameControllerGetButton(controller1, (SDL_GameControllerButton)e.cbutton.button)] = false;
 		controllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
 		break;
+
 	case SDL_JOYHATMOTION:
 		if((SDL_GameControllerButton)e.jhat.value == 4)
 		{
@@ -98,6 +103,7 @@ void Input::Poll(const SDL_Event& e)
 			}
 		}
 		break;
+
 	default:
 		break;
 	}
