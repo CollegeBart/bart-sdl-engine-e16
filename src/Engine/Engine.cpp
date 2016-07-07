@@ -100,6 +100,7 @@ int Engine::Run()
 
 		if (!isPaused)
 		{
+			DeltaTime();
 			Update();
 			Draw();
 		}
