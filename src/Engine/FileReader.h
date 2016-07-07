@@ -10,7 +10,8 @@ public:
 	FileReader();
 	FileReader(std::string path);
 	~FileReader();
-	std::string Read(std::string& fileContent) const;
+	void Read(std::string& fileContent) const;
+
 private:
 	std::string path;
 };
