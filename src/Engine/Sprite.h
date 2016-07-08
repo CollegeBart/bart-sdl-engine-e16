@@ -104,9 +104,9 @@ public:
 
 protected:
 	float x, y, srcX, srcY;
+	bool IsVisible;
 
 	SDL_Texture* image;
 	SDL_Rect* dstRect;
 	SDL_Rect* srcRect;
 };
-
