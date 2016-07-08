@@ -146,7 +146,7 @@ void Wqt::Update()
 	if (gInput->IsKeyPressed(SDL_SCANCODE_RETURN))
 	{
 		std::cout << "ENTER !" << std::endl;
-		Move(new Vector(2, 4));
+		MoveSprite(new Vector(2, 4));
 	}
 
 #pragma endregion

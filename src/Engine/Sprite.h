@@ -60,7 +60,7 @@ public:
 		this->y = y;
 	}
 
-	void Move(Vector * move);
+	void MoveSprite(Vector * move);
 
 	void SetSrcPosition(float x, float y)
 	{
@@ -70,6 +70,11 @@ public:
 
 	void SetSrcRect(float x, float y, int h, int w)
 	{
+		if (srcRect == nullptr)
+		{
+			srcRect = new SDL_Rect();
+		}
+
 		srcX = x;
 		srcY = y;
 		srcRect->x = x;
@@ -80,6 +85,11 @@ public:
 
 	void SetDstRect(float x, float y, int h, int w, float scaleY, float scaleX)
 	{
+		if (dstRect == nullptr)
+		{
+			dstRect= new SDL_Rect();
+		}
+
 		this->x = x;
 		this->y = y;
 		dstRect->x = x;
@@ -94,9 +104,9 @@ public:
 
 protected:
 	float x, y, srcX, srcY;
+	bool IsVisible;
 
 	SDL_Texture* image;
 	SDL_Rect* dstRect;
 	SDL_Rect* srcRect;
 };
-
