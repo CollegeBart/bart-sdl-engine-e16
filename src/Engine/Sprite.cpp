@@ -2,8 +2,8 @@
 
 Sprite::Sprite()
 	: image(nullptr)
-	, dstRect(nullptr)
-	, srcRect(nullptr)
+	, dstRect()
+	, srcRect()
 	, x(0), y(0), srcX(0), srcY(0)
 { 
 }
@@ -46,8 +46,8 @@ Sprite::Sprite(const char* path, float x, float y, int w, int h)
 }
 
 Sprite::Sprite(const char * path, float x, float y, int srcX, int srcY, int srcW, int srcH, float scale)
-	: dstRect(nullptr)
-	, srcRect(nullptr)
+	: dstRect()
+	, srcRect()
 	, x(x), y(y), srcX(srcX), srcY(srcY)
 {
 	image = gResources->GetTexture(path);
@@ -66,8 +66,8 @@ Sprite::Sprite(const char * path, float x, float y, int srcX, int srcY, int srcW
 }
 
 Sprite::Sprite(const char* path, float x, float y, int srcX, int srcY, int srcW, int srcH, float scaleX, float scaleY)
-	: dstRect(nullptr)
-	, srcRect(nullptr)
+	: dstRect()
+	, srcRect()
 	, x(x), y(y), srcX(srcX), srcY(srcY)
 
 {
