@@ -60,7 +60,7 @@ public:
 		this->y = y;
 	}
 
-	void Move(Vector * move);
+	void MoveSprite(Vector * move);
 
 	void SetSrcPosition(float x, float y)
 	{

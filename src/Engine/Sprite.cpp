@@ -94,7 +94,7 @@ Sprite::~Sprite()
 	delete dstRect;
 }
 
-void Sprite::Move(Vector * move)
+void Sprite::MoveSprite(Vector * move)
 {
 	this->x += move->GetX();
 	this->y += move->GetY();
