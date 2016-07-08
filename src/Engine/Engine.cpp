@@ -82,8 +82,7 @@ int Engine::Run()
 	// Boucle de jeu
 	while (isRunning)
 	{
-		//For when you stop scrolling
-		input->ResetMouseScroll();
+		
 		// Pompe a message
 		while (SDL_PollEvent(&event) != 0)
 		{
@@ -101,8 +100,12 @@ int Engine::Run()
 			if (input->IsKeyReleased(SDL_SCANCODE_ESCAPE))
 			{
 				Kill();
+				return 0;
 			}
 		}
+
+		//For when you stop scrolling
+		input->ResetMouseScroll();
 
 		if (!isPaused)
 		{
