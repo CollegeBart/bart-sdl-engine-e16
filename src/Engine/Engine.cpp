@@ -79,10 +79,13 @@ int Engine::Run()
 	// Boucle de jeu
 	while (isRunning)
 	{
+		//For when you stop scrolling
+		input->ResetMouseScroll();
 		// Pompe a message
 		while (SDL_PollEvent(&event) != 0)
 		{
 			input->Poll(event);
+
 			switch (event.type)
 			{
 			case SDL_QUIT:
@@ -100,6 +103,7 @@ int Engine::Run()
 
 		if (!isPaused)
 		{
+			DeltaTime();
 			Update();
 			Draw();
 		}

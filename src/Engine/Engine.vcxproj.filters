@@ -36,6 +36,9 @@
     <ClCompile Include="Resources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FileReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -62,6 +65,7 @@
     <ClInclude Include="Resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="List.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -70,5 +74,13 @@
     <None Include="List.inl">
       <Filter>Resource Files</Filter>
     </None>
+=======
+    <ClInclude Include="FileReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="minijson_reader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+>>>>>>> 3317e059bf036fae5387df8a2e18b46d817f5ef4
   </ItemGroup>
 </Project>
