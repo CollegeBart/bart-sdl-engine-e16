@@ -14,7 +14,8 @@ public:
 	~List();
 
 	void List::Add(T _object);
-	void List::Remove(); ///TO DO( NOT WORKING YET)
+	void List::RemoveFirst(); //TO DO( NOT WORKING YET)
+	void List::RemoveLast();
 	const int List::Count() const { return this->count; }
 
 private:
