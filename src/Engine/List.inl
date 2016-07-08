@@ -38,11 +38,40 @@ void List<T>::Add(T _object)
 	count++;
 }
 
-template <T>
-void List<T>::Remove()
+template <class T>
+void List<T>::RemoveFirst()
 {
+	//create a new backup List
+	listBackup = new T[tailleMax];
 
+	//copy templatelist from array position 2 to last one into listBackup
+	for (int i = 0, i < count - 2; i++)
+	{
+		listBackup[i] = templateList[i + 1];
+	}
+
+	//delete template list and initiate a new empty one
+	delete[] templateList;
+	templateList = new T[tailleMax];
+
+	//copy templateList that contains all the information of the initial template list exept the first one into the new template list
+	memcpy(listBackup, templateList, sizeof(T) * tailleMax);
+
+	//delete the backup list
+	delete[] listBackup;
+
+	//adjust count variable
+	count--;
 }
 
+template <class T>
+Void List<T>::RemoveLast()
+{
+	//overide the last initialized object of the list by a new empty(trash) one 
+	templateList[count - 1] = new T();
+
+	//adjust count variable
+	count--;
+}
 
 
