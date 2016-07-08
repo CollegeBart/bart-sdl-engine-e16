@@ -11,6 +11,9 @@ Engine::Engine()
 	, resources(nullptr)
 
 {
+	// Used for random
+	std::srand(time(0));
+
 	resolution[WIDTH] = DEFAULT_SCREEN_WIDTH;
 	resolution[HEIGHT] = DEFAULT_SCREEN_HEIGHT;
 }

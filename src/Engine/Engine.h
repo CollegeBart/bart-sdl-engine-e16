@@ -85,9 +85,6 @@ public:
 
 	int GenerateRandomNumber(const int number_of_possibility)
 	{
-		// Used for random
-		std::srand(time(0));
-
 		// Generate a number between 0 (inclusive) and number_of_possibility (exclusive).
 		int NumberGenerated = rand() % number_of_possibility;
 
