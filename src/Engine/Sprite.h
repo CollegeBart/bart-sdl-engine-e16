@@ -2,6 +2,7 @@
 
 #include "Engine.h"
 #include "Component.h"
+#include "Vector.h"
 
 class Sprite
 	: Component
@@ -58,6 +59,8 @@ public:
 		this->x = x;
 		this->y = y;
 	}
+
+	void Move(Vector * move);
 
 	void SetSrcPosition(float x, float y)
 	{

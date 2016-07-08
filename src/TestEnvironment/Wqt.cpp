@@ -142,4 +142,12 @@ void Wqt::Update()
 		std::cout << "Mouse scroll: " << gInput->GetMouseScroll() << std::endl;
 	}
 #pragma endregion
+#pragma region MoveTest
+	if (gInput->IsKeyPressed(SDL_SCANCODE_RETURN))
+	{
+		std::cout << "ENTER !" << std::endl;
+		Move(new Vector(2, 4));
+	}
+
+#pragma endregion
 }
