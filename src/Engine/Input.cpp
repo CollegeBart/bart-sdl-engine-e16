@@ -57,14 +57,14 @@ void Input::Poll(const SDL_Event& e)
 		mouseScrollDirection = e.wheel.y;
 		break;
 
-	case SDL_JOYBUTTONDOWN:
-		lastControllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
-		controllerButtons[(SDL_GameControllerButton)e.cbutton.button] = true;
+	case SDL_CONTROLLERBUTTONDOWN:
+		lastControllerButtons[e.cbutton.button] = false;
+		controllerButtons[e.cbutton.button] = true;
 		break;
 
-	case SDL_JOYBUTTONUP:
-		lastControllerButtons[(SDL_GameControllerButton)e.cbutton.button] = true;
-		controllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
+	case SDL_CONTROLLERBUTTONUP:
+		lastControllerButtons[e.cbutton.button] = true;
+		controllerButtons[e.cbutton.button] = false;
 		break;
 	default:
 		break;
