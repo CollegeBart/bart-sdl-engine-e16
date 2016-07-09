@@ -133,3 +133,11 @@ void Sprite::Draw()
 		}
 	}
 }
+
+void Sprite::ToggleVisibility()
+{
+	if (IsVisible)
+		IsVisible = false;
+	else
+		IsVisible = true;
+}
