@@ -14,6 +14,7 @@ public:
 	~List();
 
 	void Add(T* _object);
+	void Remove(int _target);
 	T* Get(int i);
 	void RemoveFirst();
 	void RemoveLast();

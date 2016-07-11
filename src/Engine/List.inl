@@ -24,7 +24,7 @@ List<T>::~List()
 template <class T>
 void List<T>::Add(T* _object)
 {
-	if (count >= LIST_MAX_VALUE)
+	if (count >= tailleMax)
 	{
 		listBackup = new T*[tailleMax];
 		memcpy(listBackup, templateList, sizeof(T) * tailleMax);
@@ -36,6 +36,27 @@ void List<T>::Add(T* _object)
 	}
 	templateList[count] = _object;
 	count++;
+}
+
+template <class T>
+void List<T>::Remove(int _target)
+{
+	listBackup = new T*[tailleMax];
+	memcpy(listBackup, templateList, sizeof(T) * tailleMax);
+	delete[] templateList;
+	templateList = new T*[tailleMax];
+
+	for (int i = 0; i < _target; i++)
+	{
+		templateList[i] = listBackup[i];
+	}
+
+	count--;
+
+	for (int i = _target; i < count; i++)
+	{
+		templateList[i] = listBackup[i + 1];
+	}
 }
 
 template <class T>
@@ -92,7 +113,7 @@ void List<T>::MoveToLast(int _target)
 	int counting = 0;
 
 	memcpy(listBackup, templateList, sizeof(T) * tailleMax);
-	delete[templateList];
+	delete[] templateList;
 	templateList = new T*[tailleMax];
 
 	for (int i = 0; i < _target; i++)
@@ -103,7 +124,7 @@ void List<T>::MoveToLast(int _target)
 	for (int i = _target; i < count - 1; i++)
 	{
 		templateList[i] = listBackup[i + 1];
-		counting++
+		counting++;
 	}
 	templateList[counting] = listBackup[_target];
 }
