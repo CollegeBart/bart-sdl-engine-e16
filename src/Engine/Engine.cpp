@@ -11,6 +11,9 @@ Engine::Engine()
 	, resources(nullptr)
 
 {
+	// Used for random
+	std::srand(time(0));
+
 	resolution[WIDTH] = DEFAULT_SCREEN_WIDTH;
 	resolution[HEIGHT] = DEFAULT_SCREEN_HEIGHT;
 }
@@ -34,7 +37,7 @@ void Engine::Init()
 void Engine::Init(char * title, int width, int height)
 {
 	// Initialisation
-	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) > 0)
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK | SDL_INIT_GAMECONTROLLER) > 0)
 	{
 		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
 	}
@@ -57,7 +60,7 @@ void Engine::Init(char * title, int width, int height)
 			}
 			else
 			{
-				SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+				SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00); 
 
 				input = new Input();
 				resources = new Resources(renderer);
@@ -79,8 +82,7 @@ int Engine::Run()
 	// Boucle de jeu
 	while (isRunning)
 	{
-		//For when you stop scrolling
-		input->ResetMouseScroll();
+		
 		// Pompe a message
 		while (SDL_PollEvent(&event) != 0)
 		{
@@ -98,8 +100,12 @@ int Engine::Run()
 			if (input->IsKeyReleased(SDL_SCANCODE_ESCAPE))
 			{
 				Kill();
+				return 0;
 			}
 		}
+
+		//For when you stop scrolling
+		input->ResetMouseScroll();
 
 		if (!isPaused)
 		{

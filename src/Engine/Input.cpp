@@ -57,64 +57,15 @@ void Input::Poll(const SDL_Event& e)
 		mouseScrollDirection = e.wheel.y;
 		break;
 
-	case SDL_JOYBUTTONDOWN:
-		lastControllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
-		controllerButtons[(SDL_GameControllerButton)e.cbutton.button] = true;
+	case SDL_CONTROLLERBUTTONDOWN:
+		lastControllerButtons[e.cbutton.button] = false;
+		controllerButtons[e.cbutton.button] = true;
 		break;
 
-	case SDL_JOYBUTTONUP:
-		lastControllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
-		lastControllerButtons[SDL_GameControllerGetButton(controller1, (SDL_GameControllerButton)e.cbutton.button)] = false;
-		controllerButtons[(SDL_GameControllerButton)e.cbutton.button] = false;
+	case SDL_CONTROLLERBUTTONUP:
+		lastControllerButtons[e.cbutton.button] = true;
+		controllerButtons[e.cbutton.button] = false;
 		break;
-
-	case SDL_JOYHATMOTION:
-		if((SDL_GameControllerButton)e.jhat.value == 4)
-		{
-			if (!lastControllerButtons[12])
-			{
-				lastControllerButtons[12] = true;
-			}
-			else
-			{
-				lastControllerButtons[12] = false;
-			}
-		}
-		if ((SDL_GameControllerButton)e.jhat.value == 2)
-		{
-			if (!lastControllerButtons[14])
-			{
-				lastControllerButtons[14] = true;
-			}
-			else
-			{
-				lastControllerButtons[14] = false;
-			}
-		}
-		if ((SDL_GameControllerButton)e.jhat.value == 3)
-		{
-			if (!lastControllerButtons[11])
-			{
-				lastControllerButtons[11] = true;
-			}
-			else
-			{
-				lastControllerButtons[11] = false;
-			}
-		}
-		if ((SDL_GameControllerButton)e.jhat.value == 1)
-		{
-			if (!lastControllerButtons[11])
-			{
-				lastControllerButtons[11] = true;
-			}
-			else
-			{
-				lastControllerButtons[11] = false;
-			}
-		}
-		break;
-
 	default:
 		break;
 	}
@@ -147,14 +98,10 @@ bool Input::IsKeyReleased(SDL_Scancode key)
 
 bool Input::IsControllerButtonPressed(SDL_GameController* controller, SDL_GameControllerButton button)
 {
-	bool isPressed = false;
-	if (!lastControllerButtons[button] && SDL_GameControllerGetButton(controller, button))
-	{
-		isPressed = true;
-	}
+	bool isPressed = !lastControllerButtons[button] && controllerButtons[button];
 	if (isPressed) 
 	{
-		lastControllerButtons[button] = true;
+		lastControllerButtons[button] = controllerButtons[button];
 	}
 	return isPressed;
 }
@@ -166,14 +113,10 @@ bool Input::IsControllerButtonHeld(SDL_GameController* controller, SDL_GameContr
 
 bool Input::IsControllerButtonReleased(SDL_GameController* controller, SDL_GameControllerButton button)
 {
-	bool isReleased = false;
-	if (lastControllerButtons[button] && !SDL_GameControllerGetButton(controller, button))
-	{
-		isReleased = true;
-	}
+	bool isReleased = lastControllerButtons[button] && !controllerButtons[button];
 	if (isReleased)
 	{
-		lastControllerButtons[button] = false;
+		lastControllerButtons[button] = controllerButtons[button];
 	}
 	return isReleased;
 }

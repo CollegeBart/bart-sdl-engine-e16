@@ -11,6 +11,7 @@ Sprite::Sprite()
 Sprite::Sprite(const char * path)
 	: dstRect(nullptr)
 	, srcRect(nullptr)
+	, IsVisible(true)
 {
 	srcRect = new SDL_Rect();
 	dstRect = new SDL_Rect();
@@ -21,6 +22,7 @@ Sprite::Sprite(const char* path, float x, float y)
 	: dstRect(nullptr)
 	, srcRect(nullptr)
 	, x(x), y(y), srcX(0), srcY(0)
+	, IsVisible(true)
 {
 	image = gResources->GetTexture(path);
 }
@@ -29,6 +31,7 @@ Sprite::Sprite(const char* path, float x, float y, int w, int h)
 	: dstRect(nullptr)
 	, srcRect(nullptr)
 	, x(x), y(y), srcX(0), srcY(0)
+	, IsVisible(true)
 {
 	image = gResources->GetTexture(path);
 
@@ -49,6 +52,7 @@ Sprite::Sprite(const char * path, float x, float y, int srcX, int srcY, int srcW
 	: dstRect()
 	, srcRect()
 	, x(x), y(y), srcX(srcX), srcY(srcY)
+	, IsVisible(true)
 {
 	image = gResources->GetTexture(path);
 
@@ -69,7 +73,7 @@ Sprite::Sprite(const char* path, float x, float y, int srcX, int srcY, int srcW,
 	: dstRect()
 	, srcRect()
 	, x(x), y(y), srcX(srcX), srcY(srcY)
-
+	, IsVisible(true)
 {
 	image = gResources->GetTexture(path);
 
@@ -94,6 +98,13 @@ Sprite::~Sprite()
 	delete dstRect;
 }
 
+void Sprite::MoveSprite(Vector * move)
+{
+	this->x += move->GetX();
+	this->y += move->GetY();
+	Draw();
+}
+
 void Sprite::Update()
 {
 	
@@ -101,21 +112,32 @@ void Sprite::Update()
 
 void Sprite::Draw()
 {
-	if (image != nullptr && gEngine->GetRenderer() != nullptr)
+	if (IsVisible)
 	{
-		if (dstRect != nullptr)
+		if (image != nullptr && gEngine->GetRenderer() != nullptr)
 		{
-			dstRect->x = x;
-			dstRect->y = y;
-		}
+			if (dstRect != nullptr)
+			{
+				dstRect->x = x;
+				dstRect->y = y;
+			}
 
-		if (srcRect != nullptr)
-		{
-			srcRect->x = srcX;
-			srcRect->y = srcY;
-		}
+			if (srcRect != nullptr)
+			{
+				srcRect->x = srcX;
+				srcRect->y = srcY;
+			}
 
-		//Render texture to screen
-		SDL_RenderCopy(gEngine->GetRenderer(), image, srcRect, dstRect);
+			//Render texture to screen
+			SDL_RenderCopy(gEngine->GetRenderer(), image, srcRect, dstRect);
+		}
 	}
+}
+
+void Sprite::ToggleVisibility()
+{
+	if (IsVisible)
+		IsVisible = false;
+	else
+		IsVisible = true;
 }

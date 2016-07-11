@@ -16,6 +16,27 @@ FileReader::~FileReader()
 {
 }
 
+std::vector<std::string> FileReader::Split(std::string & data, char * token, std::vector<std::string>& elems)
+{
+	const char * cString = data.c_str();
+	int lenght = strlen(cString);
+	char * usable = new char[lenght];
+
+	usable = strcpy(usable, cString);
+
+	char * pch;
+	pch = strtok(usable, token);
+
+	while (pch != nullptr)
+	{
+		std::string data(pch);
+		elems.push_back(data);
+		pch = strtok(nullptr, token);
+	}
+
+	return std::vector<std::string>();
+}
+
 void FileReader::Read(std::string& fileContent) const
 {
 	std::ifstream file(path);

@@ -2,6 +2,7 @@
 
 #include "Engine.h"
 #include "Component.h"
+#include "Vector.h"
 
 class Sprite
 	: Component
@@ -59,6 +60,8 @@ public:
 		this->y = y;
 	}
 
+	void MoveSprite(Vector * move);
+
 	void SetSrcPosition(float x, float y)
 	{
 		srcX = x;
@@ -67,6 +70,11 @@ public:
 
 	void SetSrcRect(float x, float y, int h, int w)
 	{
+		if (srcRect == nullptr)
+		{
+			srcRect = new SDL_Rect();
+		}
+
 		srcX = x;
 		srcY = y;
 		srcRect->x = x;
@@ -77,6 +85,11 @@ public:
 
 	void SetDstRect(float x, float y, int h, int w, float scaleY, float scaleX)
 	{
+		if (dstRect == nullptr)
+		{
+			dstRect= new SDL_Rect();
+		}
+
 		this->x = x;
 		this->y = y;
 		dstRect->x = x;
@@ -87,13 +100,13 @@ public:
 
 	virtual void Update();
 	void Draw();
-	
-
+	bool IsVisible;
+	void ToggleVisibility();
 protected:
 	float x, y, srcX, srcY;
+	
 
 	SDL_Texture* image;
 	SDL_Rect* dstRect;
 	SDL_Rect* srcRect;
 };
-
