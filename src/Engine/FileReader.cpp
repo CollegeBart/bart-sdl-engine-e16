@@ -34,7 +34,7 @@ std::vector<std::string> FileReader::Split(std::string & data, char * token, std
 		pch = strtok(nullptr, token);
 	}
 
-	return std::vector<std::string>();
+	return elems;
 }
 
 void FileReader::Read(std::string& fileContent) const
