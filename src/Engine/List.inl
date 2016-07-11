@@ -101,6 +101,12 @@ void List<T>::Insert()
 
 }
 
+template<class T>
+inline T& List<T>::operator[](int i)
+{
+	return templateList[i];
+}
+
 template <class T>
 void List<T>::MoveToLast(int _target)
 {

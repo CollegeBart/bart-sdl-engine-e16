@@ -15,12 +15,12 @@ public:
 
 	void Add(T* _object);
 	void Remove(int _target);
-	T* Get(int i)	{	return templateList[i];	}
 	void RemoveFirst();
 	void RemoveLast();
 	void MoveToLast(int _target);
 	void Insert(); //TO DO, DONT WORK YET
 	int Count() const { return this->count; }
+	T& operator[](int i);
 
 private:
 
