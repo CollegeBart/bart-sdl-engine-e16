@@ -102,12 +102,6 @@ void List<T>::Insert()
 }
 
 template <class T>
-T* List<T>::Get(int i)
-{
-	return templateList[i];
-}
-
-template <class T>
 void List<T>::MoveToLast(int _target)
 {
 	int counting = 0;

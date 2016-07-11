@@ -15,7 +15,7 @@ public:
 
 	void Add(T* _object);
 	void Remove(int _target);
-	T* Get(int i);
+	T* Get(int i)	{	return templateList[i];	}
 	void RemoveFirst();
 	void RemoveLast();
 	void MoveToLast(int _target);
@@ -24,8 +24,8 @@ public:
 
 private:
 
-	T** listBackup;
 	T** templateList;
+	T** listBackup;
 	
 	int count;
 	int tailleMax;
