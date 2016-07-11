@@ -13,15 +13,18 @@ public:
 	List(int _setTailleMax);
 	~List();
 
-	void List::Add(T _object);
-	void List::RemoveFirst(); //TO DO( NOT WORKING YET)
-	void List::RemoveLast();
-	const int List::Count() const { return this->count; }
+	void Add(T* _object);
+	T* Get(int i);
+	void RemoveFirst();
+	void RemoveLast();
+	void MoveToLast(int _target);
+	void Insert(); //TO DO, DONT WORK YET
+	int Count() const { return this->count; }
 
 private:
 
-	T* listBackup;
-	T* templateList;
+	T** listBackup;
+	T** templateList;
 	
 	int count;
 	int tailleMax;
