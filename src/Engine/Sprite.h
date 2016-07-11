@@ -100,13 +100,13 @@ public:
 
 	virtual void Update();
 	void Draw();
-	
-
+	bool IsVisible;
+	void ToggleVisibility();
 protected:
 	float x, y, srcX, srcY;
+	
 
 	SDL_Texture* image;
 	SDL_Rect* dstRect;
 	SDL_Rect* srcRect;
 };
-
