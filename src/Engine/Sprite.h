@@ -18,13 +18,13 @@ public:
 
 	virtual ~Sprite();
 
-	float GetX() { return x; }
+	const float GetX() { return x; }
 
-	float GetY() { return y; }
+	const float GetY() { return y; }
 
-	float GetSrcX() { return srcX; }
+	const float GetSrcX() { return srcX; }
 
-	float GetSrcY() { return srcY; }
+	const float GetSrcY() { return srcY; }
 
 	const bool GetIsVisible() { return isVisible; }
 
