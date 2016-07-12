@@ -105,7 +105,7 @@ private:
 
 	float DeltaTime()
 	{
-		float now = SDL_GetTicks();
+		Uint32 now = SDL_GetTicks();
 		if (now > lastTick) {
 			deltaTime = ((float)(now - lastTick)) / 1000;
 			lastTick = now;

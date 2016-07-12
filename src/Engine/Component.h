@@ -10,7 +10,7 @@ class Component
 public:
 	Component();
 	virtual ~Component();
-	void ReorderLastComp();
+	void ReorderLastCompFirst();
 	virtual void Update();
 	virtual void Draw();
 
