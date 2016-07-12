@@ -13,19 +13,19 @@ public:
 	List(int _setTailleMax);
 	~List();
 
-	void Add(T* _object);
+	void Add(T _object);
 	void Remove(int _target);
 	void RemoveFirst();
 	void RemoveLast();
 	void MoveToLast(int _target);
 	void Insert(); //TO DO, DONT WORK YET
 	int Count() const { return this->count; }
-	T& operator[](int i);
+	T operator[](int i);
 
 private:
 
-	T** templateList;
-	T** listBackup;
+	T* templateList;
+	T* listBackup;
 	
 	int count;
 	int tailleMax;
