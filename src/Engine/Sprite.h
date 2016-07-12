@@ -18,8 +18,6 @@ public:
 
 	virtual ~Sprite();
 
-	void SetVisible(bool tf) { isVisible = tf; }
-
 	float GetX() { return x; }
 
 	float GetY() { return y; }
@@ -27,6 +25,8 @@ public:
 	float GetSrcX() { return srcX; }
 
 	float GetSrcY() { return srcY; }
+
+	const bool GetIsVisible() { return isVisible; }
 
 	void SetPosition(float x, float y) 
 	{ 
@@ -70,12 +70,6 @@ public:
 		dstRect->w = (int)(w * scale);
 	}
 
-	void Move(const Vector* const move)
-	{
-		x += move->GetX();
-		y += move->GetY();
-	}
-
 	void SetTexture(const char* path)
 	{
 		image = gResources->GetTexture(path);
@@ -101,6 +95,14 @@ public:
 		{
 			printf("Path is invalid: %s! SDL Error: %s\n", path, SDL_GetError());
 		}
+	}
+
+	void SetVisible(bool tf) { isVisible = tf; }
+
+	void Move(const Vector* const move)
+	{
+		x += move->GetX();
+		y += move->GetY();
 	}
 
 	virtual void Update();
