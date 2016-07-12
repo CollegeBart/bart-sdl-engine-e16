@@ -12,6 +12,14 @@ Component::~Component()
 
 }
 
+void Component::ReorderLastComp()
+{
+	Component* last = components[components.size() - 1];
+	Component* first = components[0];
+	components[components.size() - 1] = first;
+	components[0] = last;
+}
+
 void Component::Update()
 {
 	
