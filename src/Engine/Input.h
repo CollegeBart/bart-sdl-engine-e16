@@ -14,30 +14,28 @@ public:
 	~Input();
 
 	void Poll(const SDL_Event& e);
-
+	//Keyboard events
 	bool IsKeyPressed(SDL_Scancode key);
-	bool IsKeyHeld(SDL_Scancode key) const;
+	bool IsKeyHeld(SDL_Scancode key) const { return keys[key]; }
 	bool IsKeyReleased(SDL_Scancode key);
 
+	//Controller support
 	SDL_GameController *controller1 = nullptr;
 	SDL_GameController *controller2 = nullptr;
 	bool IsControllerButtonPressed(SDL_GameController* controller, SDL_GameControllerButton button);
-	bool IsControllerButtonHeld(SDL_GameController* controller, SDL_GameControllerButton button) const;
+	bool IsControllerButtonHeld(SDL_GameController* controller, SDL_GameControllerButton button) const { return SDL_GameControllerGetButton(controller, button); }
 	bool IsControllerButtonReleased(SDL_GameController* controller, SDL_GameControllerButton button);
 
+	//Mouse events
 	bool IsMouseButtonPressed(int button);
-	bool IsMouseButtonHeld(int button) const;
+	bool IsMouseButtonHeld(int button) const { return mouseButtons[button - 1]; }
 	bool IsMouseButtonReleased(int button);
-
-	bool IsMouseWheelScrolling() const;
-
-	float MouseX() const;
-	float MouseY() const;
-
-	Point<int> GetMousePosition(Point<int>& position) const;
-
-	float GetMouseScroll() const;
-	void ResetMouseScroll();
+	bool IsMouseWheelScrolling() const{ return mouseScrollDirection != 0.0f; }
+	float MouseX() const { return mousePosition.x; }
+	float MouseY() const { return mousePosition.y; }
+	Point<int> GetMousePosition(Point<int>& position) const { position = mousePosition; return position; }
+	float GetMouseScroll() const { return mouseScrollDirection; }
+	void ResetMouseScroll() { mouseScrollDirection = 0.0f; }
 
 private:
 	bool keys[SDL_NUM_SCANCODES];
