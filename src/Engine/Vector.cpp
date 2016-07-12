@@ -12,11 +12,6 @@ Vector::Vector(float x, float y, float z)
 {
 }
 
-Vector::Vector(Point p1, Point p2)
-	: x(p2.x - p1.x), y(p2.y - p1.y), z(0.0f)
-{
-}
-
 void Vector::Normalize()
 {
 	float lenght = GetLength();

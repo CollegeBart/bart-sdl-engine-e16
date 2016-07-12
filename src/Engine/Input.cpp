@@ -8,7 +8,7 @@ Input::Input()
 	memset(mouseButtons, 0, sizeof(bool) * NUM_MOUSE_BUTTONS);
 	memset(lastMouseButtons, 0, sizeof(bool) * NUM_MOUSE_BUTTONS);
 
-	mousePosition = Point(0, 0);
+	mousePosition = Point<int>(0, 0);
 
 	ResetMouseScroll();
 
@@ -81,11 +81,6 @@ bool Input::IsKeyPressed(SDL_Scancode key)
 	return isPressed;
 }
 
-bool Input::IsKeyHeld(SDL_Scancode key) const
-{
-	return keys[key];
-}
-
 bool Input::IsKeyReleased(SDL_Scancode key)
 {
 	bool isReleased = lastKeys[key] && !keys[key];
@@ -104,11 +99,6 @@ bool Input::IsControllerButtonPressed(SDL_GameController* controller, SDL_GameCo
 		lastControllerButtons[button] = controllerButtons[button];
 	}
 	return isPressed;
-}
-
-bool Input::IsControllerButtonHeld(SDL_GameController* controller, SDL_GameControllerButton button) const
-{
-	return SDL_GameControllerGetButton(controller, button);
 }
 
 bool Input::IsControllerButtonReleased(SDL_GameController* controller, SDL_GameControllerButton button)
@@ -133,11 +123,6 @@ bool Input::IsMouseButtonPressed(int button)
 	return isPressed;
 }
 
-bool Input::IsMouseButtonHeld(int button) const
-{
-	return mouseButtons[button - 1];
-}
-
 bool Input::IsMouseButtonReleased(int button)
 {
 	bool isReleased = lastMouseButtons[button - 1] && !mouseButtons[button - 1];
@@ -146,39 +131,6 @@ bool Input::IsMouseButtonReleased(int button)
 		lastMouseButtons[button - 1] = mouseButtons[button - 1];
 	}
 	return isReleased;
-}
-
-bool Input::IsMouseWheelScrolling() const
-{
-	return mouseScrollDirection != 0.0f;
-}
-
-float Input::MouseX() const
-{
-	return mousePosition.x;
-}
-
-float Input::MouseY() const
-{
-	return mousePosition.y;
-}
-
-Point Input::GetMousePosition(Point& position) const
-{
-	// Calculer
-	position = mousePosition;
-
-	return position;
-}
-
-float Input::GetMouseScroll() const
-{
-	return mouseScrollDirection;
-}
-
-void Input::ResetMouseScroll()
-{
-	mouseScrollDirection = 0.0f;
 }
 
 void Input::OpenControllers()

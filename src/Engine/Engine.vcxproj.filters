@@ -25,6 +25,7 @@
     <ClCompile Include="Vector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SpriteAnimation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -59,6 +60,13 @@
     </ClInclude>
     <ClInclude Include="minijson_reader.hpp">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteAnimation.h" />
+    <ClInclude Include="Pool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PoolObject.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
