@@ -14,6 +14,7 @@ enum ResolutionSide
 #define gEngine Engine::GetInstance()
 #define gInput gEngine->GetInput()
 #define gResources gEngine->GetResources()
+//#define gTimer gEngine->GetTimer()
 
 #include <iostream>
 #include <vector>

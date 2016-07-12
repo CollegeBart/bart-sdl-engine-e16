@@ -21,9 +21,15 @@
     <ClCompile Include="Wqt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WqtAnimation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Wqt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WqtAnimation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
