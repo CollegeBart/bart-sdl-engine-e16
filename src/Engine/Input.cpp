@@ -8,7 +8,7 @@ Input::Input()
 	memset(mouseButtons, 0, sizeof(bool) * NUM_MOUSE_BUTTONS);
 	memset(lastMouseButtons, 0, sizeof(bool) * NUM_MOUSE_BUTTONS);
 
-	mousePosition = Point(0, 0);
+	mousePosition = Point<int>(0, 0);
 
 	ResetMouseScroll();
 
@@ -163,7 +163,7 @@ float Input::MouseY() const
 	return mousePosition.y;
 }
 
-Point Input::GetMousePosition(Point& position) const
+Point<int> Input::GetMousePosition(Point<int>& position) const
 {
 	// Calculer
 	position = mousePosition;

@@ -34,7 +34,7 @@ public:
 	float MouseX() const;
 	float MouseY() const;
 
-	Point GetMousePosition(Point& position) const;
+	Point<int> GetMousePosition(Point<int>& position) const;
 
 	float GetMouseScroll() const;
 	void ResetMouseScroll();
@@ -53,6 +53,6 @@ private:
 	float mouseScrollDirection;
 
 	//Might need SDL_MouseMotionEvent instead
-	Point mousePosition;
+	Point<int> mousePosition;
 };
 

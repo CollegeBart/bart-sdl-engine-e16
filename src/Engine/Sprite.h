@@ -16,16 +16,65 @@ public:
 	Sprite(const char* path, float x, float y, int srcX,
 		int srcY, int srcW, int srcH, float scale = 1.0f);
 
-	Sprite(const char* path, float x, float y,	int srcX,
-		int srcY, int srcW, int srcH, float scaleX, float scaleY);
-
 	virtual ~Sprite();
 
+	void SetVisible(bool tf) { isVisible = tf; }
+
 	float GetX() { return x; }
+
 	float GetY() { return y; }
 
 	float GetSrcX() { return srcX; }
+
 	float GetSrcY() { return srcY; }
+
+	void SetPosition(float x, float y) 
+	{ 
+		this->x = x; 
+		this->y = y; 
+	}
+
+	void SetSrcPosition(float x, float y)
+	{
+		srcX = x;
+		srcY = y;
+	}
+
+	void SetSrcRect(float x, float y, int h, int w)
+	{
+		if (srcRect == nullptr)
+		{
+			srcRect = new SDL_Rect();
+		}
+
+		srcX = x;
+		srcY = y;
+		srcRect->x = (int)x;
+		srcRect->y = (int)y;
+		srcRect->h = h;
+		srcRect->w = w;
+	}
+
+	void SetDstRect(float x, float y, int h, int w, float scale=1.0f)
+	{
+		if (dstRect == nullptr)
+		{
+			dstRect = new SDL_Rect();
+		}
+
+		this->x = x;
+		this->y = y;
+		dstRect->x = (int)x;
+		dstRect->y = (int)y;
+		dstRect->h = (int)(h * scale);
+		dstRect->w = (int)(w * scale);
+	}
+
+	void Move(const Vector* const move)
+	{
+		x += move->GetX();
+		y += move->GetY();
+	}
 
 	void SetTexture(const char* path)
 	{
@@ -54,58 +103,15 @@ public:
 		}
 	}
 
-	void SetPosition(float x, float y)
-	{
-		this->x = x;
-		this->y = y;
-	}
-
-	void MoveSprite(Vector * move);
-
-	void SetSrcPosition(float x, float y)
-	{
-		srcX = x;
-		srcY = y;
-	}
-
-	void SetSrcRect(float x, float y, int h, int w)
-	{
-		if (srcRect == nullptr)
-		{
-			srcRect = new SDL_Rect();
-		}
-
-		srcX = x;
-		srcY = y;
-		srcRect->x = x;
-		srcRect->y = y;
-		srcRect->h = h;
-		srcRect->w = w;
-	}
-
-	void SetDstRect(float x, float y, int h, int w, float scaleY, float scaleX)
-	{
-		if (dstRect == nullptr)
-		{
-			dstRect= new SDL_Rect();
-		}
-
-		this->x = x;
-		this->y = y;
-		dstRect->x = x;
-		dstRect->y = y;
-		dstRect->h = h * scaleY;
-		dstRect->w = w * scaleX;
-	}
-
 	virtual void Update();
 	void Draw();
-	bool IsVisible;
-	void ToggleVisibility();
-protected:
-	float x, y, srcX, srcY;
+		
 	
 
+protected:
+	bool isVisible;
+	float x, y, srcX, srcY;
+	
 	SDL_Texture* image;
 	SDL_Rect* dstRect;
 	SDL_Rect* srcRect;

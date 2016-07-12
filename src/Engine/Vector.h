@@ -5,12 +5,10 @@
 class Vector
 {
 public:
-
 	enum Axis { X, Y, Z};
 
 	Vector();
 	Vector(float x, float y, float z = 0.0f);
-	Vector(Point p1, Point p2);
 
 	void Normalize();
 	float Dot(Vector* other);

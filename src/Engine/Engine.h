@@ -101,7 +101,7 @@ public:
 private:
 	void Update();
 	void Draw();
-	float lastTick = 0;
+	Uint32 lastTick = 0;
 
 	float DeltaTime()
 	{

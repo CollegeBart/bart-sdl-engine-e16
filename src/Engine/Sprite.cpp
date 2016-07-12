@@ -11,7 +11,7 @@ Sprite::Sprite()
 Sprite::Sprite(const char * path)
 	: dstRect(nullptr)
 	, srcRect(nullptr)
-	, IsVisible(true)
+	, isVisible(true)
 {
 	srcRect = new SDL_Rect();
 	dstRect = new SDL_Rect();
@@ -22,7 +22,7 @@ Sprite::Sprite(const char* path, float x, float y)
 	: dstRect(nullptr)
 	, srcRect(nullptr)
 	, x(x), y(y), srcX(0), srcY(0)
-	, IsVisible(true)
+	, isVisible(true)
 {
 	image = gResources->GetTexture(path);
 }
@@ -31,7 +31,7 @@ Sprite::Sprite(const char* path, float x, float y, int w, int h)
 	: dstRect(nullptr)
 	, srcRect(nullptr)
 	, x(x), y(y), srcX(0), srcY(0)
-	, IsVisible(true)
+	, isVisible(true)
 {
 	image = gResources->GetTexture(path);
 
@@ -42,8 +42,8 @@ Sprite::Sprite(const char* path, float x, float y, int w, int h)
 	srcRect->h = h;
 
 	dstRect = new SDL_Rect();
-	dstRect->x = x;
-	dstRect->y = y;
+	dstRect->x = (int)x;
+	dstRect->y = (int)y;
 	dstRect->w = w;
 	dstRect->h = h;
 }
@@ -52,7 +52,7 @@ Sprite::Sprite(const char * path, float x, float y, int srcX, int srcY, int srcW
 	: dstRect()
 	, srcRect()
 	, x(x), y(y), srcX(srcX), srcY(srcY)
-	, IsVisible(true)
+	, isVisible(true)
 {
 	image = gResources->GetTexture(path);
 
@@ -63,31 +63,10 @@ Sprite::Sprite(const char * path, float x, float y, int srcX, int srcY, int srcW
 	srcRect->h = srcH;
 
 	dstRect = new SDL_Rect();
-	dstRect->x = x;
-	dstRect->y = y;
-	dstRect->h = srcH * scale;
-	dstRect->w = srcW * scale;
-}
-
-Sprite::Sprite(const char* path, float x, float y, int srcX, int srcY, int srcW, int srcH, float scaleX, float scaleY)
-	: dstRect()
-	, srcRect()
-	, x(x), y(y), srcX(srcX), srcY(srcY)
-	, IsVisible(true)
-{
-	image = gResources->GetTexture(path);
-
-	srcRect = new SDL_Rect();
-	srcRect->x = srcX;
-	srcRect->y = srcY;
-	srcRect->w = srcW;
-	srcRect->h = srcH;
-
-	dstRect = new SDL_Rect();
-	dstRect->x = x;
-	dstRect->y = y;
-	dstRect->h = srcH * scaleX;
-	dstRect->w = srcW * scaleY;
+	dstRect->x = (int)x;
+	dstRect->y = (int)y;
+	dstRect->h = (int)(srcH * scale);
+	dstRect->w = (int)(srcW * scale);
 }
 
 Sprite::~Sprite()
@@ -98,13 +77,6 @@ Sprite::~Sprite()
 	delete dstRect;
 }
 
-void Sprite::MoveSprite(Vector * move)
-{
-	this->x += move->GetX();
-	this->y += move->GetY();
-	Draw();
-}
-
 void Sprite::Update()
 {
 	
@@ -112,32 +84,24 @@ void Sprite::Update()
 
 void Sprite::Draw()
 {
-	if (IsVisible)
+	if (isVisible)
 	{
 		if (image != nullptr && gEngine->GetRenderer() != nullptr)
 		{
 			if (dstRect != nullptr)
 			{
-				dstRect->x = x;
-				dstRect->y = y;
+				dstRect->x = (int)x;
+				dstRect->y = (int)y;
 			}
 
 			if (srcRect != nullptr)
 			{
-				srcRect->x = srcX;
-				srcRect->y = srcY;
+				srcRect->x = (int)srcX;
+				srcRect->y = (int)srcY;
 			}
 
 			//Render texture to screen
 			SDL_RenderCopy(gEngine->GetRenderer(), image, srcRect, dstRect);
 		}
 	}
-}
-
-void Sprite::ToggleVisibility()
-{
-	if (IsVisible)
-		IsVisible = false;
-	else
-		IsVisible = true;
 }

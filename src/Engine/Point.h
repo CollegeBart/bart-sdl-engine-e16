@@ -2,6 +2,7 @@
 
 #include <math.h>
 
+template <class T>
 struct Point
 {
 	Point() : x(0), y(0) {}
@@ -24,5 +25,5 @@ struct Point
 		return false;
 	}
 
-	float x, y;
+	T x, y;
 };

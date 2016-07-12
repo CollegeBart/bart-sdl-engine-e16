@@ -7,7 +7,7 @@ Wqt::Wqt()
 	: Sprite("wqt.jpg", 0, 0)
 {
 	// Exemple minijson
-	int content;
+	double content;
 	char buffer[] = "{ \"height\":88, \"width\":100 }";
 	minijson::buffer_context ctx(buffer, sizeof(buffer) - 1);
 	minijson::parse_object(ctx, [&](const char* k, minijson::value v)
@@ -146,7 +146,7 @@ void Wqt::Update()
 	if (gInput->IsKeyPressed(SDL_SCANCODE_RETURN))
 	{
 		std::cout << "ENTER !" << std::endl;
-		MoveSprite(new Vector(2, 4));
+		Move(new Vector(2, 4));
 	}
 
 #pragma endregion
