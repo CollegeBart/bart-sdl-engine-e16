@@ -102,9 +102,9 @@ void List<T>::Insert()
 }
 
 template<class T>
-inline T& List<T>::operator[](int i)
+inline T* List<T>::operator[](int i)
 {
-	return *templateList[i];
+	return templateList[i];
 }
 
 template <class T>
@@ -112,8 +112,13 @@ void List<T>::MoveToLast(int _target)
 {
 	int counting = 0;
 
-	memcpy(listBackup, templateList, sizeof(T) * tailleMax);
-	delete[] templateList;
+	listBackup = new T*[tailleMax];
+	for (int i = 0; i < tailleMax; i++)
+	{
+		listBackup[i] = templateList[i];
+	}
+
+	//memcpy(listBackup, templateList, sizeof(T) * tailleMax);
 	templateList = new T*[tailleMax];
 
 	for (int i = 0; i < _target; i++)
@@ -127,4 +132,5 @@ void List<T>::MoveToLast(int _target)
 		counting++;
 	}
 	templateList[counting] = listBackup[_target];
+	delete[] listBackup;
 }

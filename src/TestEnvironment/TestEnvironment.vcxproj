@@ -156,9 +156,11 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Wqt.cpp" />
+    <ClCompile Include="WqtAnimation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Wqt.h" />
+    <ClInclude Include="WqtAnimation.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
