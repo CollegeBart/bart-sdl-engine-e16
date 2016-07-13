@@ -43,11 +43,6 @@ void Engine::Init(char * title, int width, int height)
 	}
 	else
 	{
-		//Initialize SDL_mixer
-		if (Mix_OpenAudio(48000, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
-		{
-			printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
-		}
 		window = SDL_CreateWindow(
 			title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 			width, height, SDL_WINDOW_SHOWN);
@@ -65,6 +60,17 @@ void Engine::Init(char * title, int width, int height)
 			}
 			else
 			{
+				//Initialize SDL_mixer
+				if (Mix_OpenAudio(48000, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+				{
+					printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+				}
+
+				if (TTF_Init() < 0)
+				{
+					printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
+				}
+
 				SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00); 
 
 				input = new Input();
