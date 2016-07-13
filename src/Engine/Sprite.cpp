@@ -4,6 +4,7 @@ Sprite::Sprite()
 	: image(nullptr)
 	, dstRect()
 	, srcRect()
+	, isVisible(true)
 	, x(0), y(0), srcX(0), srcY(0)
 { 
 }

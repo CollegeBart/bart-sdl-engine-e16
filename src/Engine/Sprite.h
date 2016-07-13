@@ -107,7 +107,6 @@ public:
 
 	virtual void Update();
 	void Draw();
-		
 	
 
 protected:
