@@ -71,23 +71,21 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\lib\SDL2\lib\x86;..\..\lib\SDL2_image\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\lib\SDL2_mixer-2.0.1\include;..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\lib\SDL2\lib\x64;..\..\lib\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\lib\SDL2_mixer-2.0.1\include;..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\lib\SDL2\lib\x64;..\..\lib\SDL2_mixer-2.0.1\lib\x64;..\..\lib\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\lib\SDL2\lib\x86;..\..\lib\SDL2_image\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\lib\SDL2_mixer-2.0.1\include;..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\lib\SDL2\lib\x64;..\..\lib\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\lib\SDL2_mixer-2.0.1\include;..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\lib\SDL2\lib\x64;..\..\lib\SDL2_mixer-2.0.1\lib\x64;..\..\lib\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
