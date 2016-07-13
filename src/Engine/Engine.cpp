@@ -37,12 +37,17 @@ void Engine::Init()
 void Engine::Init(char * title, int width, int height)
 {
 	// Initialisation
-	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK | SDL_INIT_GAMECONTROLLER) > 0)
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK | SDL_INIT_GAMECONTROLLER) > 0)
 	{
 		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
 	}
 	else
 	{
+		//Initialize SDL_mixer
+		if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+		{
+			printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+		}
 		window = SDL_CreateWindow(
 			title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 			width, height, SDL_WINDOW_SHOWN);
