@@ -5,7 +5,7 @@
 #include "Vector.h"
 
 class Sprite
-	: Component
+	: public Component
 {
 public:
 	Sprite();
@@ -110,7 +110,6 @@ public:
 
 	virtual void Update();
 	void Draw();
-		
 	
 
 protected:
