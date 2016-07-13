@@ -5,7 +5,7 @@
 #include "Vector.h"
 
 class Sprite
-	: Component
+	: public Component
 {
 public:
 	Sprite();

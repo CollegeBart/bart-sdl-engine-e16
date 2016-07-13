@@ -19,11 +19,7 @@ public:
 	virtual void Update();
 	virtual void Draw();
 
-
-	bool operator < (const Component* str) const
-	{
-		return (orderLayer < str->orderLayer);
-	}
+	bool operator < (const Component* str) const {	return (orderLayer < str->orderLayer);	}
 
 private:
 	static std::vector<Component*> components;
