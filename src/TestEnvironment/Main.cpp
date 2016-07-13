@@ -3,10 +3,13 @@
 #include "WqtAnimation.h"
 #include <iostream>
 #include "List.h"
+#include "Text.h"
 
 int main(int argc, char* args[])
 {
 	gEngine->Init();
+
+	Text* monText = new Text("emulogic.ttf", "Hello World!", 16);
 
 	SpriteInfo wqtInfos[] =
 	{
@@ -24,6 +27,7 @@ int main(int argc, char* args[])
 	// Détruire tous mes objets
 	delete wqtAnimation;
 	//delete monCompo;
+	delete monText;
 
 	return assert;
 }

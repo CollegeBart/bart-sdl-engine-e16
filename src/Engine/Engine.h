@@ -22,6 +22,7 @@ enum ResolutionSide
 #include <time.h>
 
 #include "SDL.h"
+#include "SDL_ttf.h"
 
 #include "Utils.h"
 #include "Input.h"

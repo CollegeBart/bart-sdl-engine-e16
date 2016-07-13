@@ -4,6 +4,7 @@
 
 #include "SDL.h"
 #include "SDL_image.h"
+#include "SDL_mixer.h"
 
 class Resources
 {
@@ -11,6 +12,11 @@ public:
 	Resources();
 	Resources(SDL_Renderer* renderer);
 	~Resources();
+
+	void SetTexture(const char* path, SDL_Texture* tex)
+	{
+		resources[path] = tex;
+	}
 
 	SDL_Texture* GetTexture(const char* path)
 	{

@@ -75,15 +75,18 @@ public:
 		image = gResources->GetTexture(path);
 	}
 
-	void SetTexture(SDL_Texture* tex)
-	{
-		SetTexture("", tex);
-	}
-
 	void SetTexture(const char* path, SDL_Texture* tex)
 	{
+		std::string s(path);
+		std::string s2(".ttf");
 		if (gResources->GetTexture(tex))
 		{
+			image = tex;
+		}
+		else
+		if (s.find(s2) != std::string::npos) 
+		{
+			gResources->SetTexture(path, tex);
 			image = tex;
 		}
 		else

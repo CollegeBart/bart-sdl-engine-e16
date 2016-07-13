@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{ADE39BFF-8C74-47C5-BFAD-8DB0DE03663E}</ProjectGuid>
+    <ProjectGuid>{4790F741-9E0B-4D2E-8AA4-F0BC4963C76E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SDLEngine</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
@@ -71,23 +71,21 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\lib\SDL2\lib\x86;..\..\lib\SDL2_image\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;..\..\lib\SDL2_mixer\include;..\..\lib\SDL2_ttf\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\lib\SDL2\lib\x64;..\..\lib\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;..\..\lib\SDL2_mixer\include;..\..\lib\SDL2_ttf\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\lib\SDL2\lib\x64;..\..\lib\SDL2_image\lib\x64;..\..\lib\SDL2_mixer\lib\x64;..\..\lib\SDL2_ttf\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\lib\SDL2\lib\x86;..\..\lib\SDL2_image\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;..\..\lib\SDL2_mixer\include;..\..\lib\SDL2_ttf\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\lib\SDL2\lib\x64;..\..\lib\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\lib\SDL2\include;..\..\lib\SDL2_image\include;..\..\lib\SDL2_mixer\include;..\..\lib\SDL2_ttf\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\lib\SDL2\lib\x64;..\..\lib\SDL2_image\lib\x64;..\..\lib\SDL2_mixer\lib\x64;..\..\lib\SDL2_ttf\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -162,6 +160,7 @@
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteAnimation.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +176,7 @@
     <ClInclude Include="Resources.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteAnimation.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
