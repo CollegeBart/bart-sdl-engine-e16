@@ -160,6 +160,7 @@
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteAnimation.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +176,7 @@
     <ClInclude Include="Resources.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteAnimation.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>

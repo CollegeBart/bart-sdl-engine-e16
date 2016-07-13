@@ -26,6 +26,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SpriteAnimation.cpp" />
+    <ClCompile Include="Text.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -68,6 +69,7 @@
     <ClInclude Include="PoolObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Text.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

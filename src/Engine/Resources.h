@@ -13,6 +13,11 @@ public:
 	Resources(SDL_Renderer* renderer);
 	~Resources();
 
+	void SetTexture(const char* path, SDL_Texture* tex)
+	{
+		resources[path] = tex;
+	}
+
 	SDL_Texture* GetTexture(const char* path)
 	{
 		if (!resources[path])
