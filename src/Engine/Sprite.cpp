@@ -93,10 +93,10 @@ bool Sprite::ContainsRect(SDL_Rect* rect)
 
 bool Sprite::ContainsPoint(int x, int y)
 {
-	return	x > this->x &&
-			x < (this->x + dstRect->w) &&
-			y > this->y &&
-			y < (this->y + dstRect->h);
+	return	x >= this->x &&
+			x <= (this->x + dstRect->w) &&
+			y >= this->y &&
+			y <= (this->y + dstRect->h);
 }
 
 void Sprite::Update()

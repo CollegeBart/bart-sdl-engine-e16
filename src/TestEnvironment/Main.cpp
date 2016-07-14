@@ -18,6 +18,11 @@ int main(int argc, char* args[])
 		LAST_FRAME
 	};
 
+	Sprite col1 = Sprite("", 0, 0, 10, 10);
+	Sprite col2 = Sprite("", 0, 0, 10, 10);
+
+	std::cout << col1.HitTest(&col2) << std::endl;
+
 	// Créer tous mes objets
 	//Wqt* monCompo = new Wqt();
 	WqtAnimation* wqtAnimation = new WqtAnimation(wqtInfos);

@@ -129,8 +129,7 @@ public:
 	}
 
 	bool HitTest(Sprite* other);
-	bool ContainsRect(SDL_Rect* rect);
-	bool ContainsPoint(int x, int y);
+	
 
 	virtual void Update();
 	void Draw();
@@ -142,4 +141,8 @@ protected:
 	SDL_Texture* image;
 	SDL_Rect* dstRect;
 	SDL_Rect* srcRect;
+
+private:
+	bool ContainsRect(SDL_Rect* rect);
+	bool ContainsPoint(int x, int y);
 };
