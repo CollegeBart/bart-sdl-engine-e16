@@ -25,8 +25,12 @@
     <ClCompile Include="Vector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteAnimation.cpp" />
-    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="SpriteAnimation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -62,14 +66,15 @@
     <ClInclude Include="minijson_reader.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteAnimation.h" />
     <ClInclude Include="Pool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PoolObject.h">
+    <ClInclude Include="SpriteAnimation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Text.h" />
+    <ClInclude Include="Text.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

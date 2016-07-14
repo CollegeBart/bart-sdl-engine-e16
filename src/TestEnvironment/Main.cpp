@@ -9,7 +9,7 @@ int main(int argc, char* args[])
 {
 	gEngine->Init();
 
-	Text* monText = new Text("emulogic.ttf", "Hello World!", 16);
+	Text* monText = new Text(0, 0, "emulogic.ttf", "Hello World!", 16);
 
 	SpriteInfo wqtInfos[] =
 	{
