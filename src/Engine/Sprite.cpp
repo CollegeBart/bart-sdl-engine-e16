@@ -4,6 +4,7 @@ Sprite::Sprite()
 	: image(nullptr)
 	, dstRect()
 	, srcRect()
+	, isVisible(true)
 	, x(0), y(0), srcX(0), srcY(0)
 { 
 }
@@ -75,6 +76,27 @@ Sprite::~Sprite()
 	image = NULL;
 	delete srcRect;
 	delete dstRect;
+}
+
+bool Sprite::HitTest(Sprite * other)
+{
+	return ContainsRect(other->dstRect) || other->ContainsRect(dstRect);
+}
+
+bool Sprite::ContainsRect(SDL_Rect* rect)
+{
+	return	ContainsPoint(rect->x, rect->y) ||
+			ContainsPoint(rect->x + rect->w, rect->y) ||
+			ContainsPoint(rect->x + rect->w, rect->y + rect->h) ||
+			ContainsPoint(rect->x, rect->y + rect->h);
+}
+
+bool Sprite::ContainsPoint(int x, int y)
+{
+	return	x > this->x &&
+			x < (this->x + dstRect->w) &&
+			y > this->y &&
+			y < (this->y + dstRect->h);
 }
 
 void Sprite::Update()
