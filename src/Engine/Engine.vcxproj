@@ -172,7 +172,6 @@
     <ClInclude Include="minijson_reader.hpp" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Pool.h" />
-    <ClInclude Include="PoolObject.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteAnimation.h" />

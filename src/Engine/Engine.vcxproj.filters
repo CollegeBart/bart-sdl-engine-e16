@@ -66,9 +66,6 @@
     <ClInclude Include="Pool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PoolObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Text.h" />
   </ItemGroup>
   <ItemGroup>
