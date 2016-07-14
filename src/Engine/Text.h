@@ -6,7 +6,7 @@ class Text :
 {
 public:
 	Text();
-	Text(std::string fontName, std::string text, int taille);
+	Text(int x, int y, std::string fontName, std::string text, int taille);
 	~Text();
 
 private:

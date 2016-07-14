@@ -55,6 +55,11 @@ public:
 		srcRect->w = w;
 	}
 
+	void SetDstRect(const SDL_Rect* const dst, float scale = 1.0f)
+	{
+		SetDstRect(dst->x, dst->y, dst->h, dst->w, scale);
+	}
+
 	void SetDstRect(float x, float y, int h, int w, float scale=1.0f)
 	{
 		if (dstRect == nullptr)
@@ -68,6 +73,17 @@ public:
 		dstRect->y = (int)y;
 		dstRect->h = (int)(h * scale);
 		dstRect->w = (int)(w * scale);
+	}
+
+	void SetSize(int w, int h)
+	{
+		if (dstRect == nullptr)
+		{
+			dstRect = new SDL_Rect();
+		}
+
+		dstRect->w = w;
+		dstRect->h = h;
 	}
 
 	void SetTexture(const char* path)
@@ -110,8 +126,6 @@ public:
 
 	virtual void Update();
 	void Draw();
-		
-	
 
 protected:
 	bool isVisible;
