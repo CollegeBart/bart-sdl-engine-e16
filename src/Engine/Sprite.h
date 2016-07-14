@@ -12,21 +12,25 @@ public:
 	Sprite(const char* path);
 	Sprite(const char* path, float x, float y);
 	Sprite(const char* path, float x, float y, int w, int h);
-
 	Sprite(const char* path, float x, float y, int srcX,
 		int srcY, int srcW, int srcH, float scale = 1.0f);
 
 	virtual ~Sprite();
 
-	const float GetX() { return x; }
+	float GetX() const { return x; }
+	float GetY() const { return y; }
+	int GetW() const { return dstRect->w; }
+	int GetH() const { return dstRect->h; }
 
-	const float GetY() { return y; }
+	const SDL_Rect* const GetDstRect() const
+	{
+		return srcRect;
+	}
 
-	const float GetSrcX() { return srcX; }
-
-	const float GetSrcY() { return srcY; }
-
-	const bool GetIsVisible() { return isVisible; }
+	float GetSrcX() const { return srcX; }
+	float GetSrcY() const { return srcY; }
+	
+	bool GetIsVisible() { return isVisible; }
 
 	void SetPosition(float x, float y) 
 	{ 
@@ -55,6 +59,11 @@ public:
 		srcRect->w = w;
 	}
 
+	void SetDstRect(const SDL_Rect* const dst, float scale = 1.0f)
+	{
+		SetDstRect(dst->x, dst->y, dst->h, dst->w, scale);
+	}
+
 	void SetDstRect(float x, float y, int h, int w, float scale=1.0f)
 	{
 		if (dstRect == nullptr)
@@ -68,6 +77,17 @@ public:
 		dstRect->y = (int)y;
 		dstRect->h = (int)(h * scale);
 		dstRect->w = (int)(w * scale);
+	}
+
+	void SetSize(int w, int h)
+	{
+		if (dstRect == nullptr)
+		{
+			dstRect = new SDL_Rect();
+		}
+
+		dstRect->w = w;
+		dstRect->h = h;
 	}
 
 	void SetTexture(const char* path)
@@ -108,9 +128,12 @@ public:
 		y += move->GetY();
 	}
 
+	bool HitTest(Sprite* other);
+	bool ContainsRect(SDL_Rect* rect);
+	bool ContainsPoint(int x, int y);
+
 	virtual void Update();
 	void Draw();
-	
 
 protected:
 	bool isVisible;
