@@ -12,6 +12,8 @@ public:
 	void SetBgColor(SDL_Color newColor);
 
 	void SetFgColor(SDL_Color newColor);
+
+	void SetText(std::string newText);
 	
 private:
 	SDL_Color bgColor;

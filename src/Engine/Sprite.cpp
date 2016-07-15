@@ -54,6 +54,8 @@ Sprite::Sprite(const char * path, float x, float y, int srcX, int srcY, int srcW
 	, srcRect()
 	, x(x), y(y), srcX(srcX), srcY(srcY)
 	, isVisible(true)
+	, xScale(scale)
+	, yScale(scale)
 {
 	image = gResources->GetTexture(path);
 
@@ -126,4 +128,16 @@ void Sprite::Draw()
 			SDL_RenderCopy(gEngine->GetRenderer(), image, srcRect, dstRect);
 		}
 	}
+}
+
+void Sprite::ScaleX(float scale)
+{
+	this->dstRect->w = (int)(this->dstRect->w * scale);
+	//Draw();
+}
+
+void Sprite::ScaleY(float scale)
+{
+	this->dstRect->h = (int)(this->dstRect->h * scale);
+	//Draw();
 }
