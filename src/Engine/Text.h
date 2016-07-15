@@ -9,12 +9,18 @@ public:
 	Text(int x, int y, std::string fontName, std::string text, int taille);
 	~Text();
 
-private:
+	void SetBgColor(SDL_Color newColor);
 
+	void SetFgColor(SDL_Color newColor);
+	
+private:
 	SDL_Color bgColor;
 	SDL_Color fgColor;
 
 	TTF_Font* font;
 	std::string text;
+	std::string fontName;
+	int taille;
 };
+
 
