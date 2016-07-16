@@ -143,7 +143,7 @@ void Input::OpenControllers()
 				std::cout << "Controller :" << SDL_GameControllerName(controller2) << "Connected as controller2!" << std::endl;
 			}
 			else {
-				fprintf(stderr, "Could not open gamecontroller %i: %s\nDid you add gamecontrollerdb.txt in your project file??\n Pick it up in TestEnvironement files", i, SDL_GetError());
+				fprintf(stderr, "Could not open gamecontroller %i: %s\nDid you add gamecontrollerdb.txt in your project file??\n Pick it up in TestEnvironement files \n", i, SDL_GetError());
 			}
 		}
 		if (!controller1) {
@@ -152,7 +152,7 @@ void Input::OpenControllers()
 				std::cout << "Controller :" << SDL_GameControllerName(controller1) << " Connected as controller1!" << std::endl;
 			}
 			else {
-				fprintf(stderr, "Could not open gamecontroller %i: %s\nDid you add gamecontrollerdb.txt in your project file??\n Pick it up in TestEnvironement files", i, SDL_GetError());
+				fprintf(stderr, "Could not open gamecontroller %i: %s\nDid you add gamecontrollerdb.txt in your project file??\n Pick it up in TestEnvironement files \n", i, SDL_GetError());
 			}
 		}
 	}
