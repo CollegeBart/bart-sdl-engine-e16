@@ -134,10 +134,14 @@ public:
 	virtual void Update();
 	void Draw();
 
+	void ScaleX(float scale);
+	void ScaleY(float scale);
+
 protected:
 	bool isVisible;
 	float x, y, srcX, srcY;
-	
+	float xScale, yScale;
+
 	SDL_Texture* image;
 	SDL_Rect* dstRect;
 	SDL_Rect* srcRect;

@@ -63,6 +63,22 @@ void Text::SetFgColor(SDL_Color newColor)
 	SDL_FreeSurface(surfaceText);
 }
 
+void Text::SetText(std::string newText)
+{
+	text = newText;
+
+	SDL_Surface * surfaceText = TTF_RenderText_Shaded(font, text.c_str(), fgColor, bgColor);
+	SDL_Texture* tex = SDL_CreateTextureFromSurface(gEngine->GetRenderer(), surfaceText);
+
+	std::stringstream ss;
+	ss << fontName << "_" << taille;
+
+	fontName = ss.str();
+	SetTexture(fontName.c_str(), tex);
+
+	SDL_FreeSurface(surfaceText);
+}
+
 Text::~Text()
 {
 	TTF_CloseFont(font);

@@ -5,7 +5,7 @@ SpriteAnimation::SpriteAnimation()
 {
 }
 
-SpriteAnimation::SpriteAnimation(const char * path, float x, float y, int srcX, int srcY, int srcW, int srcH, PlayMode playMode, int frameRate, float scale)
+SpriteAnimation::SpriteAnimation(const char * path, float x, float y, int srcX, int srcY, int srcW, int srcH, PlayMode playMode, float frameRate, float scale)
 	: Sprite(path, x, y, srcX, srcY, srcW, srcH, scale)
 {
 }
@@ -34,6 +34,27 @@ SpriteAnimation::~SpriteAnimation()
 {
 }
 
+void SpriteAnimation::SetAnim(const char * path, SpriteInfo * spriteInfos, PlayMode playMode, float frameRate, int numFrame)
+{
+	this->SetTexture(path);
+	for (int i = 0; i < numFrame+1; i++)
+	{
+		this->spriteInfos[i].h = spriteInfos[i].h;
+		this->spriteInfos[i].w = spriteInfos[i].w;
+		this->spriteInfos[i].srcH = spriteInfos[i].srcH;
+		this->spriteInfos[i].srcW = spriteInfos[i].srcW;
+		this->spriteInfos[i].srcX = spriteInfos[i].srcX;
+		this->spriteInfos[i].srcY = spriteInfos[i].srcY;
+		this->spriteInfos[i].scale = spriteInfos[i].scale;
+		if (i == numFrame) {
+			this->spriteInfos[i].scale = 0;
+		}
+	}
+	this->playMode = playMode;
+	this->frameRate = frameRate;
+	this->Play();
+}
+
 void SpriteAnimation::Play()
 {
 	currentFrame = 0;
@@ -55,7 +76,7 @@ void SpriteAnimation::Update()
 		{
 			currentFrame++;
 
-			if (spriteInfos[currentFrame].scale == 0.f)
+			if (spriteInfos[currentFrame].scale == 0.0f)
 			{
 				if (playMode == LOOPING)
 					currentFrame = -1;
@@ -64,7 +85,8 @@ void SpriteAnimation::Update()
 				return;
 			}
 
-			SetSrcPosition(spriteInfos[currentFrame].srcX, spriteInfos[currentFrame].srcY);
+			//SetSrcPosition(spriteInfos[currentFrame].srcX, spriteInfos[currentFrame].srcY);
+			SetSrcRect(spriteInfos[currentFrame].srcX, spriteInfos[currentFrame].srcY, spriteInfos[currentFrame].srcH, spriteInfos[currentFrame].srcW);
 
 			currentTime = 0;
 		}

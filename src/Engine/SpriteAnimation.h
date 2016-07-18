@@ -4,6 +4,9 @@
 
 #define LAST_FRAME { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0 }
 
+/**
+* Value goes: scale, x, y, w, h, srcX, srcY, srcW, srcH.
+**/
 struct SpriteInfo
 {
 	float scale;
@@ -18,19 +21,24 @@ public:
 
 	SpriteAnimation();
 	SpriteAnimation(const char* path, float x, float y, int srcX,
-		int srcY, int srcW, int srcH, PlayMode playMode, int frameRate, float scale = 1.0f);
+		int srcY, int srcW, int srcH, PlayMode playMode, float frameRate, float scale = 1.0f);
 	SpriteAnimation(const char* path, SpriteInfo* spriteInfo, PlayMode playMode, float frameRate);
 	virtual ~SpriteAnimation();
-
+	/**
+	*Don't include LAST_FRAME in numFrame ... 
+	*Initialize Sprite with Anim, This function only changes active animation and doesn't create a new one.
+	**/
+	void SetAnim(const char * path, SpriteInfo * spriteInfos, PlayMode playMode, float frameRate, int numFrame);
+	int frameRate;
 	void Play();
 	void Pause();
 	void Update();
 
 private:
-	bool isplaying;
-	int frameRate, currentFrame;
-	float currentTime;
 	PlayMode playMode;
+	bool isplaying;
+	int currentFrame;
+	float currentTime;
 	SpriteInfo* spriteInfos;
 };
 
