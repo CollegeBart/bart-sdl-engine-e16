@@ -15,10 +15,17 @@ Component::~Component()
 
 void Component::ReorderLastCompFirst()
 {
-	Component* last = components[components.size() - 1];
-	Component* first = components[0];
-	components[components.size() - 1] = first;
-	components[0] = last;
+	std::vector<Component*> componentsCpy;
+	componentsCpy.push_back(components.at(components.size() - 1));
+	for (int i = 0; i < components.size() - 1; i++)
+	{
+		componentsCpy.push_back(components.at(i));
+	}
+	components.clear();
+	for (int i = 0; i < componentsCpy.size(); i++)
+	{
+		components.push_back(componentsCpy.at(i));
+	}
 }
 
 void Component::SortComponentsOrderLayer()
