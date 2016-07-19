@@ -27,6 +27,7 @@ Text::Text(int x, int y, std::string fontName, std::string text, int taille)
 	this->fontName = ss.str();
 	SetTexture(this->fontName.c_str(), textTexture);
 	SetPosition(x, y);
+	SetSrcRect(0, 0, surfaceText->h, surfaceText->w);
 	SetSize(surfaceText->w, surfaceText->h);
 
 	SDL_FreeSurface(surfaceText);
@@ -77,6 +78,7 @@ void Text::SetText(std::string newText)
 
 	fontName = ss.str();
 	SetTexture(fontName.c_str(), textTexture);
+	SetSrcRect(0, 0, surfaceText->h, surfaceText->w);
 	SetSize(surfaceText->w, surfaceText->h);
 
 	SDL_FreeSurface(surfaceText);
@@ -86,5 +88,4 @@ Text::~Text()
 {
 	TTF_CloseFont(font);
 	SDL_FreeSurface(surfaceText);
-	delete textTexture;
 }
