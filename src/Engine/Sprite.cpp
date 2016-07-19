@@ -52,7 +52,7 @@ Sprite::Sprite(const char* path, float x, float y, int w, int h)
 Sprite::Sprite(const char * path, float x, float y, int srcX, int srcY, int srcW, int srcH, float scale)
 	: dstRect()
 	, srcRect()
-	, x(x), y(y), srcX(srcX), srcY(srcY)
+	, x((float)x), y((float)y), srcX(srcX), srcY(srcY)
 	, isVisible(true)
 	, xScale(scale)
 	, yScale(scale)
@@ -83,6 +83,23 @@ Sprite::~Sprite()
 bool Sprite::HitTest(Sprite * other)
 {
 	return ContainsRect(other->dstRect) || other->ContainsRect(dstRect);
+}
+
+void Sprite::SetImage(const char * path, const int srcW, const int srcH)
+{
+	image = gResources->GetTexture(path);
+
+	srcRect = new SDL_Rect();
+	srcRect->x = srcX;
+	srcRect->y = srcY;
+	srcRect->w = srcW;
+	srcRect->h = srcH;
+
+	dstRect = new SDL_Rect();
+	dstRect->x = (int)x;
+	dstRect->y = (int)y;
+	dstRect->h = (int)(srcH * xScale);
+	dstRect->w = (int)(srcW * yScale);
 }
 
 bool Sprite::ContainsRect(SDL_Rect* rect)
