@@ -30,7 +30,7 @@ public:
 	*Initialize Sprite with Anim, This function only changes active animation and doesn't create a new one.
 	**/
 	void SetAnim(const char * path, SpriteInfo * spriteInfos, PlayMode playMode, float frameRate, int numFrame);
-
+	const int GetFrameRate();
 	void Play();
 	void Pause();
 	virtual void Update();

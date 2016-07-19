@@ -87,6 +87,13 @@ bool Sprite::HitTest(Sprite * other)
 	return ContainsRect(other->dstRect) || other->ContainsRect(dstRect);
 }
 
+bool Sprite::HitTestBelow(Sprite* other) 
+{
+	return other->ContainsPoint(this->x, this->y + this->GetH()) ||
+		other->ContainsPoint(this->x + this->GetW(), this->y + this->GetH()) ||
+		other->ContainsPoint(this->x + this->GetW() / 2, this->y + this->GetH());
+}
+
 bool Sprite::ContainsRect(SDL_Rect* rect)
 {
 	return	ContainsPoint(rect->x, rect->y) ||

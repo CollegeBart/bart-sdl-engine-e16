@@ -129,6 +129,7 @@ public:
 	}
 
 	bool HitTest(Sprite* other);
+	bool HitTestBelow(Sprite* other);
 	
 
 	virtual void Update();
