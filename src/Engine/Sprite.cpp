@@ -7,6 +7,8 @@ Sprite::Sprite()
 	, isVisible(true)
 	, x(0), y(0), srcX(0), srcY(0)
 { 
+	srcRect = new SDL_Rect();
+	dstRect = new SDL_Rect();
 }
 
 Sprite::Sprite(const char * path)
@@ -103,7 +105,7 @@ bool Sprite::ContainsPoint(int x, int y)
 
 void Sprite::Update()
 {
-	
+
 }
 
 void Sprite::Draw()
@@ -133,11 +135,9 @@ void Sprite::Draw()
 void Sprite::ScaleX(float scale)
 {
 	this->dstRect->w = (int)(this->dstRect->w * scale);
-	//Draw();
 }
 
 void Sprite::ScaleY(float scale)
 {
 	this->dstRect->h = (int)(this->dstRect->h * scale);
-	//Draw();
 }
