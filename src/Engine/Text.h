@@ -23,6 +23,8 @@ private:
 	std::string text;
 	std::string fontName;
 	int taille;
+	SDL_Surface * surfaceText;
+	SDL_Texture * textTexture;
 };
 
 

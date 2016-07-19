@@ -2,7 +2,7 @@
 
 #include "Sprite.h"
 
-#define LAST_FRAME { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0, 0, 0 }
+#define LAST_FRAME { 0, 0, 0, 0, 0, 0, 0, 0, 0 }
 
 /**
 * Value goes: scale, x, y, w, h, srcX, srcY, srcW, srcH.
@@ -24,19 +24,21 @@ public:
 		int srcY, int srcW, int srcH, PlayMode playMode, float frameRate, float scale = 1.0f);
 	SpriteAnimation(const char* path, SpriteInfo* spriteInfo, PlayMode playMode, float frameRate);
 	virtual ~SpriteAnimation();
+
 	/**
 	*Don't include LAST_FRAME in numFrame ... 
 	*Initialize Sprite with Anim, This function only changes active animation and doesn't create a new one.
 	**/
 	void SetAnim(const char * path, SpriteInfo * spriteInfos, PlayMode playMode, float frameRate, int numFrame);
-	int frameRate;
+
 	void Play();
 	void Pause();
-	void Update();
+	virtual void Update();
 
 private:
 	PlayMode playMode;
 	bool isplaying;
+	int frameRate;
 	int currentFrame;
 	float currentTime;
 	SpriteInfo* spriteInfos;
