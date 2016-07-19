@@ -16,6 +16,9 @@ Engine::Engine()
 
 	resolution[WIDTH] = DEFAULT_SCREEN_WIDTH;
 	resolution[HEIGHT] = DEFAULT_SCREEN_HEIGHT;
+
+	//Our test callback function
+	Uint32 Callback(Uint32 interval, void* param);
 }
 
 Engine::~Engine()
@@ -89,7 +92,7 @@ void Engine::Start()
 int Engine::Run()
 {
 	Start();
-	
+
 	// Boucle de jeu
 	while (isRunning)
 	{
@@ -127,7 +130,6 @@ int Engine::Run()
 
 		SDL_UpdateWindowSurface(window);
 	}
-
 	return 0;
 }
 
