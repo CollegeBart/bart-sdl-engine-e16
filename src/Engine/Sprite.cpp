@@ -7,6 +7,8 @@ Sprite::Sprite()
 	, isVisible(true)
 	, x(0), y(0), srcX(0), srcY(0)
 { 
+	srcRect = new SDL_Rect();
+	dstRect = new SDL_Rect();
 }
 
 Sprite::Sprite(const char * path)
@@ -85,6 +87,13 @@ bool Sprite::HitTest(Sprite * other)
 	return ContainsRect(other->dstRect) || other->ContainsRect(dstRect);
 }
 
+bool Sprite::HitTestBelow(Sprite* other) 
+{
+	return other->ContainsPoint(this->x, this->y + this->GetH()) ||
+		other->ContainsPoint(this->x + this->GetW(), this->y + this->GetH()) ||
+		other->ContainsPoint(this->x + this->GetW() / 2, this->y + this->GetH());
+}
+
 void Sprite::SetImage(const char * path, const int srcW, const int srcH)
 {
 	image = gResources->GetTexture(path);
@@ -101,7 +110,6 @@ void Sprite::SetImage(const char * path, const int srcW, const int srcH)
 	dstRect->h = (int)(srcH * xScale);
 	dstRect->w = (int)(srcW * yScale);
 }
-
 bool Sprite::ContainsRect(SDL_Rect* rect)
 {
 	return	ContainsPoint(rect->x, rect->y) ||
@@ -120,7 +128,7 @@ bool Sprite::ContainsPoint(int x, int y)
 
 void Sprite::Update()
 {
-	
+
 }
 
 void Sprite::Draw()
@@ -150,11 +158,9 @@ void Sprite::Draw()
 void Sprite::ScaleX(float scale)
 {
 	this->dstRect->w = (int)(this->dstRect->w * scale);
-	//Draw();
 }
 
 void Sprite::ScaleY(float scale)
 {
 	this->dstRect->h = (int)(this->dstRect->h * scale);
-	//Draw();
 }

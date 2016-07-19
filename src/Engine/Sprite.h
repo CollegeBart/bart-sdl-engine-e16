@@ -129,6 +129,7 @@ public:
 	}
 
 	bool HitTest(Sprite* other);
+	bool HitTestBelow(Sprite* other);
 	void SetImage(const char* path, const int srcW, const int srcH);
 
 	virtual void Update();
