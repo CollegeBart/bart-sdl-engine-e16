@@ -55,7 +55,7 @@ void SpriteAnimation::SetAnim(const char * path, SpriteInfo * spriteInfos, PlayM
 	this->Play();
 }
 
-int SpriteAnimation::GetFrameRate()
+const int SpriteAnimation::GetFrameRate()
 {
 	return frameRate;
 }
