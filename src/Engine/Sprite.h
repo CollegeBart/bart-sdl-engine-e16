@@ -61,7 +61,7 @@ public:
 
 	void SetDstRect(const SDL_Rect* const dst, float scale = 1.0f)
 	{
-		SetDstRect(dst->x, dst->y, dst->h, dst->w, scale);
+		SetDstRect((float)dst->x, (float)dst->y, dst->h, dst->w, scale);
 	}
 
 	void SetDstRect(float x, float y, int h, int w, float scale=1.0f)
@@ -130,7 +130,7 @@ public:
 
 	bool HitTest(Sprite* other);
 	bool HitTestBelow(Sprite* other);
-	
+	void SetImage(const char* path, const int srcW, const int srcH);
 
 	virtual void Update();
 	void Draw();
