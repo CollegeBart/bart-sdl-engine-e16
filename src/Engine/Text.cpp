@@ -87,5 +87,4 @@ void Text::SetText(std::string newText)
 Text::~Text()
 {
 	TTF_CloseFont(font);
-	SDL_FreeSurface(surfaceText);
 }
