@@ -4,12 +4,15 @@
 #include <iostream>
 #include "List.h"
 #include "Text.h"
+#include "TextBg.h"
 
 int main(int argc, char* args[])
-{
-	gEngine->Init();
+{ 
+	gEngine->Init("Chrono Trigger Test", 255 * 4, 210 * 4);
 
-	Text* monText = new Text(0, 0, "emulogic.ttf", "Hello World!", 16);
+	
+
+	TextBg * bg = new TextBg();
 
 	//SpriteInfo wqtInfos[] =
 	//{
@@ -33,6 +36,6 @@ int main(int argc, char* args[])
 	//delete wqtAnimation;
 	//delete monCompo;
 	//delete monText;
-
+	delete bg;
 	return assert;
 }
