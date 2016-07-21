@@ -16,6 +16,9 @@ Engine::Engine()
 
 	resolution[WIDTH] = DEFAULT_SCREEN_WIDTH;
 	resolution[HEIGHT] = DEFAULT_SCREEN_HEIGHT;
+
+	//Our test callback function
+	Uint32 Callback(Uint32 interval, void* param);
 }
 
 Engine::~Engine()
@@ -61,7 +64,7 @@ void Engine::Init(char * title, int width, int height)
 			else
 			{
 				//Initialize SDL_mixer
-				if (Mix_OpenAudio(48000, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+				if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 				{
 					printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
 				}
@@ -89,7 +92,7 @@ void Engine::Start()
 int Engine::Run()
 {
 	Start();
-	
+
 	// Boucle de jeu
 	while (isRunning)
 	{
@@ -127,7 +130,6 @@ int Engine::Run()
 
 		SDL_UpdateWindowSurface(window);
 	}
-
 	return 0;
 }
 
