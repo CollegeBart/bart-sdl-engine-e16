@@ -114,6 +114,14 @@ private:
 		}
 		return deltaTime;
 	}
+
+	Uint32 Callback(Uint32 interval, void* param) 
+	{
+		//Print callback message
+		printf("Callback called back with message: %s\n", (char*)param);
+
+		return 0;
+	}
 	
 	// States
 	bool isRunning;
