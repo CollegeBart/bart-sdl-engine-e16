@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FACC7CDB-ECA9-47DA-803D-F49ED65CC1A9}</ProjectGuid>
+    <ProjectGuid>{4790F741-9E0B-4D2E-8AA4-F0BC4963C76E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SDLEngine</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
@@ -152,6 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="FileReader.cpp" />
@@ -164,6 +165,7 @@
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="FileReader.h" />

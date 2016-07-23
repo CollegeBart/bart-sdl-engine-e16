@@ -2,7 +2,7 @@
 
 
 
-Animation::Animation(const char* path,int x, int y, int numFrame, int frameW , int frameH)
+Animation::Animation(const char* path, int numFrame, int frameW , int frameH,int x, int y)
 {
 	SetTexture(path);
 	this->SetDstRect(x, y, frameH, frameW);
@@ -13,7 +13,7 @@ Animation::Animation(const char* path,int x, int y, int numFrame, int frameW , i
 	Play();
 }
 
-Animation::Animation(const char * path, int x, int y, int numFrame, int frameW, int frameH, float frameRate)
+Animation::Animation(const char * path, int numFrame, int frameW, int frameH, int x, int y, float frameRate)
 {
 	SetTexture(path);
 	this->SetDstRect(x, y, frameH, frameW);
@@ -25,7 +25,7 @@ Animation::Animation(const char * path, int x, int y, int numFrame, int frameW, 
 
 }
 
-Animation::Animation(const char * path, int x, int y, int numFrame, int frameW, int frameH, bool isPlaying)
+Animation::Animation(const char * path, int numFrame, int frameW, int frameH, int x, int y, bool isPlaying)
 {
 	SetTexture(path);
 	this->SetDstRect(x, y, frameH, frameW);
@@ -36,7 +36,7 @@ Animation::Animation(const char * path, int x, int y, int numFrame, int frameW, 
 	this->isPlaying = isPlaying;
 }
 
-Animation::Animation(const char * path, int x, int y, int numFrame, int frameW, int frameH, float frameRate, bool isPlaying)
+Animation::Animation(const char * path, int numFrame, int frameW, int frameH, int x, int y, float frameRate, bool isPlaying)
 {
 	SetTexture(path);
 	this->SetDstRect(x, y, frameH, frameW);
@@ -49,7 +49,6 @@ Animation::Animation(const char * path, int x, int y, int numFrame, int frameW, 
 
 void Animation::Update()
 {
-	std::cout << "hello";
 	if (isPlaying) {
 		timer -= gEngine->deltaTime*frameRate;
 		if (timer <= 0)
@@ -60,7 +59,8 @@ void Animation::Update()
 			}
 			else
 			{
-				currentFrame = 0;			}
+				currentFrame = 0;
+			}
 			timer = 1;
 		}
 	}
