@@ -27,6 +27,7 @@ Engine::~Engine()
 
 	delete input;
 	delete resources;
+	delete timer;
 
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -78,6 +79,7 @@ void Engine::Init(char * title, int width, int height)
 
 				input = new Input();
 				resources = new Resources(renderer);
+				timer = new Timer();
 			}
 		}
 	}
@@ -87,6 +89,8 @@ void Engine::Start()
 {
 	isRunning = true;
 	isPaused = false;
+
+	timer->Start();
 }
 
 int Engine::Run()
@@ -116,6 +120,8 @@ int Engine::Run()
 				Kill();
 				return 0;
 			}
+			
+			timer->Tick();
 		}
 
 		//For when you stop scrolling
@@ -136,11 +142,22 @@ int Engine::Run()
 void Engine::Stop()
 {
 	isPaused = true;
+
+	gTimer->Stop();
+	gTimer->Reset();
 }
 
 void Engine::Update()
 {
-	FOREACH_COMPONENT(Update());
+	std::vector<Component*>::iterator iter = Component::components.begin();		
+	while (iter != Component::components.end())	
+	{		
+		if ((*iter)->GetIsActive())
+		{
+			(*iter)->Update();
+		}
+		iter++;									
+	}
 }
 
 void Engine::Draw()
