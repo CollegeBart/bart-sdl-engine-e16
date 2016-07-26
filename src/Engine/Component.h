@@ -15,6 +15,8 @@ public:
 	void ReorderLastCompFirst();
 	void SortComponentsOrderLayer();
 	void SetOrderLayer(const int _orderLayer) { orderLayer = _orderLayer; }
+	bool GetIsActive() { return isActive; }
+	void SetIsActive(bool value) { isActive = value; }
 
 	virtual void Update();
 	virtual void Draw();
@@ -24,5 +26,6 @@ public:
 private:
 	static std::vector<Component*> components;
 	int orderLayer;
+	bool isActive;
 };
 
