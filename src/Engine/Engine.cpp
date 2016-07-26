@@ -149,7 +149,15 @@ void Engine::Stop()
 
 void Engine::Update()
 {
-	FOREACH_COMPONENT(Update());
+	std::vector<Component*>::iterator iter = Component::components.begin();		
+	while (iter != Component::components.end())	
+	{		
+		if ((*iter)->GetIsActive())
+		{
+			(*iter)->Update();
+		}
+		iter++;									
+	}
 }
 
 void Engine::Draw()

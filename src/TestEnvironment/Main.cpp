@@ -37,13 +37,13 @@ int main(int argc, char* args[])
 	
 	// Créer tous mes objets
 	//Wqt* monCompo = new Wqt();
-	WqtAnimation* wqtAnimation = new WqtAnimation(wqtInfos);
+	//WqtAnimation* wqtAnimation = new WqtAnimation(wqtInfos);
 	
 	int assert = gEngine->Run();
 
 	// Détruire tous mes objets
 	//delete wqtAnimation;
-	delete monText;
+	//delete monText;
 	delete bg;
 	return assert;
 }

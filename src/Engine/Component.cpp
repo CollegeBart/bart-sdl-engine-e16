@@ -3,7 +3,7 @@
 std::vector<Component*> Component::components;
 
 Component::Component()
-	: orderLayer(0)
+	: orderLayer(0), isActive(true)
 {
 	components.push_back(this);
 }
