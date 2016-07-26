@@ -10,8 +10,6 @@ int main(int argc, char* args[])
 { 
 	gEngine->Init("Chrono Trigger Test", 255 * 4, 210 * 4);
 
-	
-
 	TextBg * bg = new TextBg();
 
 	//SpriteInfo wqtInfos[] =
@@ -37,13 +35,13 @@ int main(int argc, char* args[])
 	
 	// Créer tous mes objets
 	//Wqt* monCompo = new Wqt();
-	WqtAnimation* wqtAnimation = new WqtAnimation(wqtInfos);
+	//WqtAnimation* wqtAnimation = new WqtAnimation(wqtInfos);
 	
 	int assert = gEngine->Run();
 
 	// Détruire tous mes objets
 	//delete wqtAnimation;
-	delete monText;
+	//delete monText;
 	delete bg;
 	return assert;
 }

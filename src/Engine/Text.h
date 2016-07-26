@@ -1,5 +1,6 @@
 #pragma once
 #include "Sprite.h"
+
 #include <sstream>
 class Text :
 	public Sprite

@@ -13,12 +13,11 @@ Text::Text(int x, int y, std::string fontName, std::string text, int taille)
 	surfaceText(nullptr),
 	textTexture(nullptr)
 {
-	bgColor = { 0x00,0x00,0x00 };
-
+	fgColor = { 0xFF, 0xFF, 0xFF };
 	surfaceText = new SDL_Surface();
 
 	font = TTF_OpenFont(fontName.c_str(), taille);
-	surfaceText = TTF_RenderText_Shaded(font, text.c_str(), fgColor, bgColor);
+	surfaceText = TTF_RenderText_Blended(font, text.c_str(), fgColor);
 	textTexture = SDL_CreateTextureFromSurface(gEngine->GetRenderer(), surfaceText);
 
 	std::stringstream ss;
@@ -36,33 +35,33 @@ Text::Text(int x, int y, std::string fontName, std::string text, int taille)
 void Text::SetBgColor(SDL_Color newColor)
 {
 	bgColor = newColor;
-
-	surfaceText = TTF_RenderText_Shaded(font, text.c_str(), fgColor, bgColor);
+	
+	surfaceText = TTF_RenderText_Solid(font, text.c_str(), fgColor);
 	textTexture = SDL_CreateTextureFromSurface(gEngine->GetRenderer(), surfaceText);
-
+	
 	std::stringstream ss;
 	ss << fontName << "_" << taille;
-
+	
 	fontName = ss.str();
 	SetTexture(fontName.c_str(), textTexture);
-
-
+	
+	
 	SDL_FreeSurface(surfaceText);
 }
 
 void Text::SetFgColor(SDL_Color newColor)
 {
 	fgColor = newColor;
-
-	surfaceText = TTF_RenderText_Shaded(font, text.c_str(), fgColor, bgColor);
+	
+	surfaceText = TTF_RenderText_Solid(font, text.c_str(), fgColor);
 	textTexture = SDL_CreateTextureFromSurface(gEngine->GetRenderer(), surfaceText);
-
+	
 	std::stringstream ss;
 	ss << fontName << "_" << taille;
-
+	
 	fontName = ss.str();
 	SetTexture(fontName.c_str(), textTexture);
-
+	
 	SDL_FreeSurface(surfaceText);
 }
 
@@ -70,8 +69,9 @@ void Text::SetText(std::string newText)
 {
 	text = newText;
 
-	surfaceText = TTF_RenderText_Shaded(font, text.c_str(), fgColor, bgColor);
+	surfaceText = TTF_RenderText_Solid(font, text.c_str(), fgColor);
 	textTexture = SDL_CreateTextureFromSurface(gEngine->GetRenderer(), surfaceText);
+	//SetSurfaceAlpha(textTexture, 128);
 
 	std::stringstream ss;
 	ss << fontName << "_" << taille;
