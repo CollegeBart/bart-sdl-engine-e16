@@ -14,12 +14,14 @@ enum ResolutionSide
 #define gEngine Engine::GetInstance()
 #define gInput gEngine->GetInput()
 #define gResources gEngine->GetResources()
+#define gTimer gEngine->GetTimer()
 //#define gTimer gEngine->GetTimer()
 
 #include <iostream>
 #include <vector>
 #include <math.h>
 #include <time.h>
+#include "Timer.h"
 
 #include "SDL.h"
 #include "SDL_ttf.h"
@@ -71,6 +73,11 @@ public:
 		return resources;
 	}
 
+	Timer* const GetTimer() const
+	{
+		return timer;
+	}
+
 	void const GetScreenRes(int res[SIZE])
 	{		
 		res[WIDTH] = resolution[WIDTH];
@@ -103,16 +110,10 @@ public:
 private:
 	void Update();
 	void Draw();
-	Uint32 lastTick = 0;
 
 	float DeltaTime()
 	{
-		Uint32 now = SDL_GetTicks();
-		if (now > lastTick) {
-			deltaTime = ((float)(now - lastTick)) / 1000;
-			lastTick = now;
-		}
-		return deltaTime;
+		return timer->GetDeltaTime();
 	}
 
 	Uint32 Callback(Uint32 interval, void* param) 
@@ -136,5 +137,6 @@ private:
 	// Inputs
 	Input* input;
 	Resources* resources;
+	Timer* timer;
 
 };
