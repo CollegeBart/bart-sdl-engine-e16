@@ -2,46 +2,69 @@
 
 
 
-Animation::Animation(const char* path, int numFrame, int frameW , int frameH,int x, int y)
+Animation::Animation(const char* path, int numFrame, int frameW, int frameH, int x, int y)
+{
+	SetDstRect(x, y, frameH, frameW);
+	SetAnimation(path, numFrame, frameW, frameH);
+}
+
+Animation::Animation(const char * path, int numFrame, int frameW, int frameH, int x, int y, float frameRate)
+{
+	SetDstRect(x, y, frameH, frameW);
+	SetAnimation(path, numFrame, frameW, frameH, frameRate);
+}
+
+Animation::Animation(const char * path, int numFrame, int frameW, int frameH, int x, int y, bool isPlaying)
+{
+	SetDstRect(x, y, frameH, frameW);
+	SetAnimation(path, numFrame, frameW, frameH, isPlaying);
+}
+
+Animation::Animation(const char * path, int numFrame, int frameW, int frameH, int x, int y, float frameRate, bool isPlaying)
+{
+	SetDstRect(x, y, frameH, frameW);
+	SetAnimation(path, numFrame, frameW, frameH, frameRate, isPlaying);
+}
+
+void Animation::SetAnimation(const char * path, int numFrame, int frameW, int frameH)
 {
 	SetTexture(path);
-	this->SetDstRect(x, y, frameH, frameW);
+	SetDstRect(x, y, frameH, frameW);
 	this->frameW = frameW;
-	this->SetSrcRect(0, 0, frameH, frameW);
+	SetSrcRect(0, 0, frameH, frameW);
 	this->numFrame = numFrame;
 	frameRate = 1;
 	Play();
 }
 
-Animation::Animation(const char * path, int numFrame, int frameW, int frameH, int x, int y, float frameRate)
+void Animation::SetAnimation(const char * path, int numFrame, int frameW, int frameH, float frameRate)
 {
 	SetTexture(path);
-	this->SetDstRect(x, y, frameH, frameW);
+	SetDstRect(x, y, frameH, frameW);
 	this->frameW = frameW;
-	this->SetSrcRect(0, 0, frameH, frameW);
+	SetSrcRect(0, 0, frameH, frameW);
 	this->numFrame = numFrame;
 	this->frameRate = frameRate;
 	Play();
-
 }
 
-Animation::Animation(const char * path, int numFrame, int frameW, int frameH, int x, int y, bool isPlaying)
+void Animation::SetAnimation(const char * path, int numFrame, int frameW, int frameH, bool isPlaying)
 {
 	SetTexture(path);
-	this->SetDstRect(x, y, frameH, frameW);
+	SetDstRect(x, y, frameH, frameW);
 	this->frameW = frameW;
-	this->SetSrcRect(0, 0, frameH, frameW);
+	SetSrcRect(0, 0, frameH, frameW);
 	this->numFrame = numFrame;
 	frameRate = 1;
 	this->isPlaying = isPlaying;
 }
 
-Animation::Animation(const char * path, int numFrame, int frameW, int frameH, int x, int y, float frameRate, bool isPlaying)
+void Animation::SetAnimation(const char * path, int numFrame, int frameW, int frameH, float frameRate, bool isPlaying)
 {
 	SetTexture(path);
-	this->SetDstRect(x, y, frameH, frameW);
+	SetDstRect(x, y, frameH, frameW);
 	this->frameW = frameW;
-	this->SetSrcRect(0, 0, frameH, frameW);
+	SetSrcRect(0, 0, frameH, frameW);
 	this->numFrame = numFrame;
 	this->frameRate = frameRate;
 	this->isPlaying = isPlaying;

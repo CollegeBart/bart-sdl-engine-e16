@@ -38,7 +38,11 @@ public:
 	* If isPlaying not specified, isPlaying = true
 	**/
 	Animation(const char* path, int numFrame, int frameW, int frameH, int x, int y, float frameRate, bool isPlaying);
-
+	
+	void SetAnimation(const char* path, int numFrame, int frameW, int frameH);
+	void SetAnimation(const char* path, int numFrame, int frameW, int frameH, float frameRate);
+	void SetAnimation(const char* path, int numFrame, int frameW, int frameH, bool isPlaying);
+	void SetAnimation(const char* path, int numFrame, int frameW, int frameH, float frameRate, bool isPlaying);
 	void Update();
 	~Animation();
 	void SetCurrentFrame(int frame);
