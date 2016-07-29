@@ -120,9 +120,9 @@ int Engine::Run()
 				Kill();
 				return 0;
 			}
-			
-			timer->Tick();
 		}
+
+		timer->Tick();
 
 		//For when you stop scrolling
 		input->ResetMouseScroll();
