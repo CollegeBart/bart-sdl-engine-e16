@@ -43,11 +43,12 @@ public:
 	void SetAnimation(const char* path, int numFrame, int frameW, int frameH, float frameRate);
 	void SetAnimation(const char* path, int numFrame, int frameW, int frameH, bool isPlaying);
 	void SetAnimation(const char* path, int numFrame, int frameW, int frameH, float frameRate, bool isPlaying);
-	void Update();
-	~Animation();
+	virtual void Update();
+	virtual ~Animation();
 	void SetCurrentFrame(int frame);
 	void Play();
 	void Stop();
+	const int GetFrame();
 private:
 	int frameW;
 	int numFrame;

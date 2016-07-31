@@ -110,6 +110,7 @@ void Sprite::SetImage(const char * path, const int srcW, const int srcH)
 	dstRect->h = (int)(srcH * xScale);
 	dstRect->w = (int)(srcW * yScale);
 }
+
 bool Sprite::ContainsRect(SDL_Rect* rect)
 {
 	return	ContainsPoint(rect->x, rect->y) ||
