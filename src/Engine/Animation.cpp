@@ -72,8 +72,10 @@ void Animation::SetAnimation(const char * path, int numFrame, int frameW, int fr
 
 void Animation::Update()
 {
+	std::cout << "sup";
 	if (isPlaying) {
-		timer -= gEngine->deltaTime*frameRate;
+		std::cout << "sup";
+		timer -= gEngine->GetTimer()->GetDeltaTime()*frameRate;
 		if (timer <= 0)
 		{
 			if (currentFrame < numFrame-1)
@@ -108,5 +110,10 @@ void Animation::Play()
 void Animation::Stop()
 {
 	isPlaying = false;
+}
+
+const int Animation::GetFrame()
+{
+	return currentFrame;
 }
 
