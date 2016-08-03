@@ -46,6 +46,8 @@ float Timer::GetGameTime()const
 
 float Timer::GetDeltaTime()const
 {
+	if (mDeltaTime > 80000)
+		return 0;
 	return (float)mDeltaTime;
 }
 
