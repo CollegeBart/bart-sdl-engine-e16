@@ -82,6 +82,28 @@ Sprite::~Sprite()
 	delete dstRect;
 }
 
+void Sprite::StartFlashing(float flashDelay, float timeInvisible)
+{
+	this->flashDelay = flashDelay;
+	this->timeInvisible = timeInvisible;
+	isFlashing = true;
+}
+
+bool Sprite::isTimeToFlash()
+{
+	if (flashTimer > flashDelay)
+		return true;
+	return false;
+}
+
+void Sprite::ToggleVisibility()
+{
+	if (GetIsVisible())
+		SetVisible(false);
+	else
+		SetVisible(true);
+}
+
 bool Sprite::HitTest(Sprite * other)
 {
 	return ContainsRect(other->dstRect) || other->ContainsRect(dstRect);
@@ -129,7 +151,15 @@ bool Sprite::ContainsPoint(int x, int y)
 
 void Sprite::Update()
 {
-
+	if (isFlashing)
+	{
+		flashTimer += gTimer->GetDeltaTime();
+		if (isTimeToFlash())
+		{
+			ToggleVisibility();
+			flashTimer = 0;
+		}
+	}
 }
 
 void Sprite::Draw()

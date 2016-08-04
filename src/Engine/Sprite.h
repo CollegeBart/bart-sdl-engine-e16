@@ -128,6 +128,9 @@ public:
 		y += move->GetY();
 	}
 
+	void StartFlashing(float timeBetweenFlashes, float timeInvisible);
+	void StopFlashing() { isFlashing = false; }
+
 	bool HitTest(Sprite* other);
 	bool HitTestBelow(Sprite* other);
 	void SetImage(const char* path, const int srcW, const int srcH);
@@ -140,6 +143,12 @@ public:
 
 protected:
 	bool isVisible;
+
+	bool isFlashing = false;
+	float flashTimer = 0;
+	float flashDelay = 0;
+	float timeInvisible = 0;
+
 	float x, y, srcX, srcY;
 	float xScale, yScale;
 
@@ -150,4 +159,7 @@ protected:
 private:
 	bool ContainsRect(SDL_Rect* rect);
 	bool ContainsPoint(int x, int y);
+
+	bool isTimeToFlash();
+	void ToggleVisibility();
 };
