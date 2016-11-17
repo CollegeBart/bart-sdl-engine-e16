@@ -72,9 +72,7 @@ void Animation::SetAnimation(const char * path, int numFrame, int frameW, int fr
 
 void Animation::Update()
 {
-	std::cout << "sup";
 	if (isPlaying) {
-		std::cout << "sup";
 		timer -= gEngine->GetTimer()->GetDeltaTime()*frameRate;
 		if (timer <= 0)
 		{
