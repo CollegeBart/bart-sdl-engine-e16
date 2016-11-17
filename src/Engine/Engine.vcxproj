@@ -173,6 +173,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="minijson_reader.hpp" />
+    <ClInclude Include="minijson_writer.hpp" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Pool.h" />
     <ClInclude Include="Resources.h" />
